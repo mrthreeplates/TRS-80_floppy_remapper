@@ -1,5 +1,7 @@
 # TRS-80_floppy_remapper
 
+![front of board](/img/front-v3.jpg)![back of board](/img/back-v3.jpg)
+
 Sample build instructions with MPLAB X IDE
 
 1. Create a new project based on a PIC18F26Q10
