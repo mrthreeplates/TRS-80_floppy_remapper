@@ -1,0 +1,23 @@
+,,,,,,,,
+,,,BOM,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+Item #,*Ref Des,*Qty,Manufacturer,*Mfg Part #,Description / Value,*Package,Type,Your Instructions / Notes
+1,"C1, C2",2,Kemet,C0603C101J3GACTU,CAP CER 100PF 25V C0G/NP0 0603,0603,SMD,
+2,C3,1,Kemet,C0603C100K3GACTU,CAP CER 10PF 25V C0G/NP0 0603,0603,SMD,
+3,D1,1,Kingbright,APHHS1005LZGCK-V,1.0X0.5MM GREEN SMD LED,0402,SMD,"See ""user drawing layer"" for all LED RefDes locations.  The dot marks the Cathode.  Place D1 on top side of board next to the label ""Enabled""."
+4,D2,1,Kingbright,APHHS1005LQBC/D-V,1.0X0.5MM BLUE SMD LED,0402,SMD,"Place D2 on top side of board next to the label ""Default"""
+5,"D3, D4, D5, D6, D7",5,Kingbright,APHHS1005LSECK/J3-PF,1.0X0.5MM RED SMD LED,0402,SMD,Place D3-D7 on top side of board in the remaining 5 locations
+6,"R1, R2",2,Panasonic Electronic Components,ERJ-2GEJ242X,RES SMD 2.4K OHM 5% 1/10W 0402,0402,SMD,
+7,"R3, R4, R5, R6, R7",5,Panasonic Electronic Components,ERJ-2GEJ332X,RES SMD 3.3K OHM 5% 1/10W 0402,0402,SMD,
+8,"R8, R11",2,Panasonic Electronic Components,ERJ-2GEJ200X,RES SMD 20 OHM 5% 1/10W 0402,0402,SMD,
+9,R9,1,Panasonic Electronic Components,ERJ-2GEJ103X,RES SMD 10K OHM 5% 1/10W 0402,0402,SMD,
+10,R10,1,Panasonic Electronic Components,ERJ-2GEJ221X,RES SMD 220 OHM 5% 1/10W 0402,0402,SMD,
+11,R12,1,Panasonic Electronic Components,ERJ-2GEJ102X,RES SMD 1K OHM 5% 1/10W 0402,0402,SMD,
+12,R13,1,Panasonic Electronic Components,ERJ-2GEJ104X,RES SMD 100K OHM 5% 1/10W 0402,0402,SMD,
+13,U1,1,Microchip,PIC18F26Q10T-I/ML,64KB FLASH 3.6KB RAM 1024B EEPRO,28-QFN (6x6),SMD,Align U1 pin 1 next to corner marked with a dot.
+14,U2,1,CNC Tech,220-1-16-003,CONN HDR DIP MALE PIN 16POS GOLD,16 pin dip,through hole,"Place U2 on bottom side of board, with shorter pins into pcb, and notch facing away from U1."
+15,J1,1,Sullins Connector Solutions,PRPC007SBAN-M71RC,CONN HEADER R/A 7POS 2.54MM,7 pin sip,through hole,"Place J1 on bottom side of board, align with silk screen outline"
+16,J2,1,Sullins Connector Solutions,PRPC003SBAN-M71RC,CONN HEADER R/A 3POS 2.54MM,3 pin sip,through hole,"Place J2 on top side of board, align with silk screen outline"
+17,J3,1,Sullins Connector Solutions,PRPC002SBAN-M71RC,CONN HEADER R/A 2POS 2.54MM,2 pin sip,through hole,"Place J3 on top side of board, align with silk screen outline"

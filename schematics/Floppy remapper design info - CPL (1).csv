@@ -1,0 +1,25 @@
+Designator,Val,Package,Mid X,Mid Y,Rotation,Layer
+C1,.1 uF,C_0603_1608Metric,138.938,-87.63,90,bottom
+C2,.1 uF,C_0603_1608Metric,127.254,-97.536,0,bottom
+C3,.01 uF,C_0603_1608Metric,140.462,-93.98,90,bottom
+R1,2.4 Kohms,R_0402_1005Metric,126.111,-84.582,0,bottom
+R2,2.4 Kohms,R_0402_1005Metric,126.111,-85.979,0,bottom
+R3,3.3 Kohms,R_0402_1005Metric,126.111,-87.376,0,bottom
+R4,3.3 Kohms,R_0402_1005Metric,126.111,-88.773,0,bottom
+R5,3.3 Kohms,R_0402_1005Metric,126.111,-90.17,0,bottom
+R6,3.3 Kohms,R_0402_1005Metric,126.111,-91.567,0,bottom
+R7,3.3 Kohms,R_0402_1005Metric,126.111,-92.964,0,bottom
+R8,20 ohms,R_0402_1005Metric,133.477,-94.742,270,bottom
+R9,10 Kohms,R_0402_1005Metric,125.73,-94.488,180,bottom
+R10,220 ohms,R_0402_1005Metric,125.73,-96.012,180,bottom
+R11,20 ohms,R_0402_1005Metric,134.874,-94.742,270,bottom
+R12,1k ohms,R_0402_1005Metric,143.383,-94.2975,90,bottom
+R13,100 Kohms,R_0402_1005Metric,138.43,-94.2975,270,bottom
+U1,PIC18F26K80_IML,QFN-28-1EP_6x6mm_P0.65mm_EP4.25x4.25mm_ThermalVias,133.858,-89.154,0,bottom
+D1,LED Green,LED_0402_1005Metric,124.333,-97.536,180,top
+D2,LED Blue,LED_0402_1005Metric,133.246,-110.49,180,top
+D3,LED Red,LED_0402_1005Metric,129.286,-108.458,180,top
+D4,LED Red,LED_0402_1005Metric,129.286,-107.188,180,top
+D5,LED Red,LED_0402_1005Metric,129.286,-105.918,180,top
+D6,LED Red,LED_0402_1005Metric,129.286,-104.5845,180,top
+D7,LED Red,LED_0402_1005Metric,139.7,-103.0605,180,top
