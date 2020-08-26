@@ -6,7 +6,7 @@ http://www.vcfed.org/forum/showthread.php?75460-My-floppy-remapper-project-versi
 
 ![front of board](/images/front-v3.jpg)![back of board](/images/back-v3.jpg)
 
-Sample build instructions with MPLAB X IDE
+Build instruction with MPLAB X IDE
 
 1. Create a new project based on a PIC18F26Q10
 2. Under your projects tab, "Important Files", right click to "Add item to important Files"
@@ -20,6 +20,11 @@ Sample build instructions with MPLAB X IDE
    a default"main.c".
 5. Overwrite "main.c" with the one from this repo
 6. Build the project, it should compile w/o errors.
+
+Alternatively, you can import the prebuilt hex file into a new project.
+
+1. Select "File" -> "Import" -> Hex and select the hex file from this repo.
+2. Finish creating a new project based on a PIC18F26Q10
 
 Programming instructions for PICKit 4
 
