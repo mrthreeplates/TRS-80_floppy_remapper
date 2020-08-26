@@ -33,26 +33,26 @@ Programming instructions for PICKit 4
 3. Select "power target circuit from PICKit 4"
    Note: This is required as there is no external power supply for the remapper board.
 4. Click Apply
-5. Connect 6 pin header to remapper board, please be careful to orient
-   programming connector to match the board pins!  MCLR has an arrow on it.
+5. Connect the 6 pin programming header to the remapper board, please be careful to orient
+   programming header to match the board pins!  Look for the MCLR pin with an arrow on it.
 6. Click program.
 
 After programming (unless the PIC18 is held in reset) it will boot and run a
 one-time-only series of self tests.  This is mostly to test the software and
 also verifies the PIC is working correctly.
 
-The LEDs will flash through a series of patterns which will take about 15 seconds.
+The LEDs will flash through a set of patterns which will take about 15 seconds.
 
 At the end, all of the LEDs should remain lit, with the enable LED flashing slowly.
 This indicates the tests passed and allows you to verify all the LEDs are working.
 
 The next time the PIC boots, it will assume it has been installed into a TRS-80 and
 will start working normally.  If you boot the PIC without having it installed, the
-board can behaive unpredictably due to floating inputs (although there is no harm).
+board may behave unpredictably due to floating inputs (although there is no harm).
 
 At the end of the tests, if a error is found, the LEDs will flash in an
 alternating pattern.  This means there is either a bug in the code or a problem with
-the PIC or board.  If you later try to install the board into a computer, it will
+the board.  If you later try to install the board into a computer, it will
 refuse to work (as the error status is saved into EEPROM).  In order to re-run
 the tests you must re-program the PIC.
 
