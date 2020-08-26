@@ -50,11 +50,11 @@ The next time the PIC boots, it will assume it has been installed into a TRS-80 
 will start working normally.  If you boot the PIC without having it installed, the
 board may behave unpredictably due to floating inputs (although there is no harm).
 
-At the end of the tests, if a error is found, the LEDs will flash in an
+At the end of the tests, if an error is found, all of the LEDs will flash in an
 alternating pattern.  This means there is either a bug in the code or a problem with
-the board.  If you later try to install the board into a computer, it will
-refuse to work (as the error status is saved into EEPROM).  In order to re-run
-the tests you must re-program the PIC.
+the board.  Either way, this needs to be fixed. If you try to install the board
+into a computer, it will refuse to work (as the error status is saved into EEPROM).
+In order to re-run the tests, you must re-program the PIC.
 
 Ordering boards from PCBway:
 
