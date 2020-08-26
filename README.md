@@ -1,10 +1,14 @@
 # TRS-80_floppy_remapper
 
+![front of board](/images/front-v3.jpg)![back of board](/images/back-v3.jpg)
+
 Information about the project:
 
 http://www.vcfed.org/forum/showthread.php?75460-My-floppy-remapper-project-version-2
 
-![front of board](/images/front-v3.jpg)![back of board](/images/back-v3.jpg)
+[PCB related files](/design) (e.g. schematic, pin map, gerber files, bill of materials, centroid file)
+
+[Programming files](/program) (MPLAB source code and compiled HEX file)
 
 Build instruction with MPLAB X IDE
 
