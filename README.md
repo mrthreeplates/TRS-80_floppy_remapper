@@ -1,6 +1,6 @@
 # TRS-80_floppy_remapper
 
-![front of board](/img/front-v3.jpg)![back of board](/img/back-v3.jpg)
+![front of board](/images/front-v3.jpg)![back of board](/images/back-v3.jpg)
 
 Sample build instructions with MPLAB X IDE
 
