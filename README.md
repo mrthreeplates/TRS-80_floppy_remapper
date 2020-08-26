@@ -1,5 +1,9 @@
 # TRS-80_floppy_remapper
 
+Information about the project:
+
+http://www.vcfed.org/forum/showthread.php?75460-My-floppy-remapper-project-version-2
+
 ![front of board](/images/front-v3.jpg)![back of board](/images/back-v3.jpg)
 
 Sample build instructions with MPLAB X IDE
