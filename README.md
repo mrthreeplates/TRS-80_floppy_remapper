@@ -6,9 +6,11 @@ Information about the project:
 
 http://www.vcfed.org/forum/showthread.php?75460-My-floppy-remapper-project-version-2
 
-[PCB related files](/design) (e.g. schematic, pin map, gerber files, bill of materials, centroid file)
+[design files](/design): (schematic and pin map).
 
-[Programming files](/program) (MPLAB source code and compiled HEX file)
+[PCB files](/design/pcb_info): (gerbers, bill of materials, centroid)
+
+[Programming files](/program) (MPLAB project source code and compiled HEX file)
 
 Build instruction with MPLAB X IDE
 
