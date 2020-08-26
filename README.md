@@ -11,7 +11,7 @@ Additionally, this board adds support for two external floppy drives on Model 4P
 computers (which only support two internal drives).
 
 Note: A special floppy cable is required on the Model 4P which extends the floppy drive bus
-out of the back of the computer.
+out of the back of the computer.  Instructions TBD.
 
 The main reason for remapping the floppy drives on these computers
 is to enable booting from drives other than the fixed internal drive 0.  This is particualy
@@ -25,6 +25,12 @@ A physical disable switch can installed which disables the selected floppy mappi
 In order to install this board, the floppy drive controller's 74LS174 chip (a hex D flip-flop) must be removed
 and a 16 pin socket installed in its place.  This board replaces the function of the 74LS174.  Additionally, the
 model 4 Gate-array and model 4 non-gate array computers require a minor board modification.
+
+WARNING: This is a hobby project, that I've done for fun, and am sharing my effort for others
+to enjoy.  This project requires some soldering and assumes you are very comfortable working around
+electronics.  Deadly high voltage is present on these computers!  Do not proceed if you don't know
+what you are doing!  I make no claim that these instructions are complete, correct, easy to
+follow, or you won't damage your computer.  If this worries you at all, this project isn't for you.
 
 More information and background about this project:
 
@@ -74,7 +80,7 @@ also verifies the PIC is working correctly.
 The LEDs will flash through a set of patterns which will take about 15 seconds.
 
 At the end, all of the LEDs should remain lit, with the enable LED flashing slowly.
-This indicates the tests passed and allows you to verify all the LEDs are working.
+This indicates the tests passed and confirms all the LEDs are working.
 
 The next time the PIC boots, it will assume it has been installed into a TRS-80 and
 will start working normally.  If you boot the PIC without having it installed, the
@@ -85,7 +91,3 @@ alternating pattern.  This means there is either a bug in the code or a problem 
 the board.  Either way, this needs to be fixed. If you try to install the board
 into a computer, it will refuse to work (as the error status is saved into EEPROM).
 In order to re-run the tests, you must re-program the PIC.
-
-Ordering boards from PCBway:
-
-https://www.pcbway.com/project/shareproject/Tandy_Radio_Shack_TRS_80_Floppy_Disk_Remapper.html
