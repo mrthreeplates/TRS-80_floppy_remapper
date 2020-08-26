@@ -2,15 +2,39 @@
 
 ![front of board](/images/front-v3.jpg)![back of board](/images/back-v3.jpg)
 
-Information about the project:
+Introduction
+
+This board dynamically remaps the floppy disk drives (numbered 0 through 3) in vintage
+TRS-80 Model 3, 4, and 4P computers.
+
+Additionally, this board adds support for two external floppy drives on Model 4P
+computers (which only support two internal drives).
+
+Note: A special floppy cable is required on the Model 4P which extends the floppy drive bus
+out of the back of the computer.
+
+The main reason for remapping the floppy drives on these computers
+is to enable booting from drives other than the fixed internal drive 0.  This is particualy
+useful when paired with an external floppy disk emulator.
+
+Remapping of the drives is selectable via software control using an "out" command, enabling one of eight
+pre-programmed floppy disk maps.  Software can also set the default power up mapping (if desired).
+
+A physical disable switch can installed which disables the selected floppy mapping.
+
+In order to install this board, the floppy drive controller's 74LS174 chip (a hex D flip-flop) must be removed
+and a 16 pin socket installed in its place.  This board replaces the function of the 74LS174.  Additionally, the
+model 4 Gate-array and model 4 non-gate array computers require a minor board modification.
+
+More information and background about this project:
 
 http://www.vcfed.org/forum/showthread.php?75460-My-floppy-remapper-project-version-2
 
-[design files](/design): (schematic and pin map).
+Project files
 
-[PCB files](/design/pcb_info): (gerbers, bill of materials, centroid)
-
-[Programming files](/program) (MPLAB project source code and compiled HEX file)
+1. [design files](/design): (schematic and pin map)
+2. [PCB files](/design/pcb_info): (gerbers, bill of materials, centroid)
+3. [Programming files](/program): (MPLAB project source code and compiled HEX file)
 
 Build instruction with MPLAB X IDE
 
