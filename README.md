@@ -14,15 +14,15 @@ The main reason for remapping the floppy drives on these computers
 is to enable booting from drives other than the fixed internal drive 0.  This is particualy
 useful when paired with an external floppy disk emulator.
 
-Remapping of the drives is selectable via software using an "out" command in basic,
+Remapping of the drives is selectable via software using a simple "out" command in basic,
 enabling one of eight pre-programmed floppy disk maps.  You can also set the default power
 up mapping (if desired).
 
 An optional disable switch can be installed, if desired.
 
 In order to install this board, one chip on the floppy disk controller
-board (or the main motherboard) needs to be removed and replaced by a socket.  Certain
-models require an additional minor motherboard modification (see below for details).
+board (or the main motherboard) needs to be replaced by a socket.  Certain
+models require an additional minor motherboard modification (see below).
 
 **WARNING**: This is a hobby project, that I've done for fun, and am sharing my effort for others
 to enjoy.  This project requires some soldering and assumes you are very comfortable working around
@@ -101,42 +101,45 @@ In order to re-run the tests, you must re-program the PIC.
 ## LEDs
 
 The LEDs are just to tell you that the board is working and other useful information.
+
 Otherwise, they are completely optional (and you obviously can't see them when
 the computer is assembled).
 
 The Green enable LED will be lit whenever the disable switch is not closed.
 
 The Red row (and bank) lights show you which mapping is currently selected.
-For example, when the first row is lit (and the bank is off), then the mapping
-of drives is unchanged.  In other words, 0 maps to 0, 1 maps to 1, 2 maps to 2,
-and 3 maps to 3.  There are 8 pre-programmed possible drive mappings.
+For example, when the first row is lit (next to "0 1 2 3") and the bank is off,
+then the mapping of drives is unchanged.  There are 8 pre-programmed drive mappings.
 
-Additionally, you can store a "default" mapping which is always selected
-upon power on of the computer.  This could be any of the 8 pre-programmed
-drive maps.  Note that the default mapping is not affected by a computer
+Additionally, you can save a "default" mapping which is always restored
+upon power on of the computer.  This can be any of the 8 pre-programmed
+drive maps.
+
+Note that the default mapping is not affected by a computer
 reset.  You can take advantage of this by temporarily changing the drive
 mapping and reseting the computer to force it to boot from another drive.
 Unless the mapping is saved, then the temporary mapping will be forgotten
 once the computer is powered off.
 
-Whenever the current mapping matches the "default" mapping which has been
-saved, the Blue light will be lit.
+Whenever the current mapping matches this saved mapping, the Blue light
+next to "Default" will be lit.
 
 Finally, the row light will flash periodically to indicate that the PIC
 controller is actually alive.
 
 ## Jumpers
 
-There are two jumpers on the board.
+There are two jumpers on the back of the board.
 
-The run jumper must be installed before installing the floppy remapper board.
+The run jumper must be installed before installing the floppy remapper board
+(i.e. whenever you aren't trying to program it).
 
 The "M4P mode" jumper should be installed when installing the flopper remapper
 into a TRS-80 Model 4P computer **and** you want to add support for external
 floppy drives.  Otherwise, this jumper can be left off.
 
 M4P mode (v.s. non-M4P mode) will be indicated by the flashing pattern of the
-row lights.  When in M4P mode, the selected row light will "double" flash.  Otherwise
+row light.  When in M4P mode, the selected row light will "double" flash.  Otherwise
 the selected row light will slowly flash.
 
 The flashing of the row light also tells you that the MCU is heathy.
@@ -144,7 +147,7 @@ The flashing of the row light also tells you that the MCU is heathy.
 ## Front headers
 
 An optional disable switch (e.g. SPST) may be installed.  When these pins
-are shorted, the floppy drive re-mapping will be disabled.
+are shorted, floppy drive re-mapping will be disabled.
 
 When in M4P mode, the ~DS2 and ~DS3 pins should be connected to a special
 floppy drive cable and routed to an external connector out of the back
@@ -153,9 +156,17 @@ just like on the Model 3 and 4 computers.
 
 For Model 4 gate array and Model 4P non-gate array computers, an extra
 motherboard modification is required.  This is what the third pin on the
-output signal header is for.
+output signal header is for (see below).
 
-## Floppy cable build instructions (M4P only)
+## Installation for a Model 3 or Model 4 (non-gate array)
+
+## Installation for a Model 4 Gate array
+
+## Installation for a Model 4P Gate array
+
+## Installation for a Model 4P (non-gate array)
+
+## Floppy cable build instructions (Model 4P only)
 
 ## Change the drive mapping
 
