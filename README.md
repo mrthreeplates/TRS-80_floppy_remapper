@@ -100,7 +100,8 @@ In order to re-run the tests, you must re-program the PIC.
 
 ## LEDs
 
-The LEDs are just to tell you that the board is working and other useful information.
+The LEDs are there to tell you that the board is working and other useful information
+(and I need blikenlights).
 
 Otherwise, they are completely optional (and you obviously can't see them when
 the computer is assembled).
@@ -117,8 +118,8 @@ drive maps.
 
 Note that the default mapping is not affected by a computer
 reset.  You can take advantage of this by temporarily changing the drive
-mapping and reseting the computer to force it to boot from another drive.
-Unless the mapping is saved, then the temporary mapping will be forgotten
+mapping (and reseting the computer) to force it to boot from another drive.
+Unless the mapping is saved, then this temporary mapping will be forgotten
 once the computer is powered off.
 
 Whenever the current mapping matches this saved mapping, the Blue light
@@ -127,9 +128,9 @@ next to "Default" will be lit.
 Finally, the row light will flash periodically to indicate that the PIC
 controller is actually alive.
 
-## Jumpers
+## Back jumpers
 
-There are two jumpers on the back of the board.
+There are two jumpers on the back of the board (on the same header used for programming).
 
 The run jumper must be installed before installing the floppy remapper board
 (i.e. whenever you aren't trying to program it).
@@ -158,20 +159,37 @@ For Model 4 gate array and Model 4P non-gate array computers, an extra
 motherboard modification is required.  This is what the third pin on the
 output signal header is for (see below).
 
-## Installation for a Model 3 or Model 4 (non-gate array)
+## Installation in a Model 3 or Model 4 (non-gate array)
 
-## Installation for a Model 4 Gate array
+TBD
 
-## Installation for a Model 4P Gate array
+## Installation in a Model 4 Gate array
 
-## Installation for a Model 4P (non-gate array)
+![Model 4](/images/install-m4-v3.jpg)
+
+## Installation in a Model 4P Gate array
+
+![Model 4P](/images/install-m4p-v3.jpg)
+
+## Installation in a Model 4P (non-gate array)
+
+Sorry, I don't have one of these yet...
+
+## Other TRS-80 Models
+
+TBD
 
 ## Floppy cable build instructions (Model 4P only)
 
+TBD
+
 ## Change the drive mapping
+
+TBD
 
 ## Theory of operation
 
+TBD
 
 
 
