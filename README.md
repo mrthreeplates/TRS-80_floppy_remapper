@@ -13,7 +13,7 @@ useful when paired with a mondern external floppy disk emulator.
 
 Additionally, this board adds support for two external floppy drives on Model 4P
 computers (which previously only supported two internal drives).  Inspiration for
-this feature came from a [January 1986 80 Micro artice](https://colorcomputerarchive.com/repo/Documents/Magazines/80%20Micro/1986/80%20Micro%20-%208601%20-%20January%201986.pdf), while reducing the number of board modifications needed.
+this feature came from a [January 1986 80 Micro article](https://colorcomputerarchive.com/repo/Documents/Magazines/80%20Micro/1986/80%20Micro%20-%208601%20-%20January%201986.pdf), while significantly reducing the number of board modifications needed.
 
 Remapping of the drives is selectable via software using a simple "out" command in basic,
 enabling one of eight pre-programmed floppy disk maps.  You can also set the default power
