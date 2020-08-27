@@ -4,15 +4,16 @@
 
 ## Introduction
 
-This board dynamically remaps the floppy disk drives (numbered 0 through 3) in vintage
+This board dynamically remaps the floppy disk drives (e.g. 0 through 3) in vintage
 TRS-80 Model 3, 4, and 4P computers.
-
-Additionally, this board adds support for two external floppy drives on Model 4P
-computers (which previously only supported two internal drives).
 
 The main reason for remapping the floppy drives on these computers
 is to enable booting from drives other than the fixed internal drive 0.  This is particualy
-useful when paired with an external floppy disk emulator.
+useful when paired with a mondern external floppy disk emulator.
+
+Additionally, this board adds support for two external floppy drives on Model 4P
+computers (which previously only supported two internal drives).  Inspiration for
+this feature came from a [January 1986 80 Micro artice](https://colorcomputerarchive.com/repo/Documents/Magazines/80%20Micro/1986/80%20Micro%20-%208601%20-%20January%201986.pdf), while reducing the number of board modifications needed.
 
 Remapping of the drives is selectable via software using a simple "out" command in basic,
 enabling one of eight pre-programmed floppy disk maps.  You can also set the default power
