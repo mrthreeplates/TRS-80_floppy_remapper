@@ -98,19 +98,19 @@ the board.  Either way, this needs to be fixed. If you try to install the board
 into a computer, it will refuse to work (as the error status is saved into EEPROM).
 In order to re-run the tests, you must re-program the PIC.
 
-## LEDs
+## Front LEDs
 
 The LEDs are there to tell you that the board is working and other useful information
 (and I need blikenlights).
 
-Otherwise, they are completely optional (and you obviously can't see them when
+Otherwise, they are optional (and you obviously can't see them when
 the computer is assembled).
 
 The Green enable LED will be lit whenever the disable switch is not closed.
 
 The Red row (and bank) lights show you which mapping is currently selected.
 For example, when the first row is lit (next to "0 1 2 3") and the bank is off,
-then the mapping of drives is unchanged.  There are 8 pre-programmed drive mappings.
+then the mapping of drives will be unchanged.  There are 8 pre-programmed drive mappings.
 
 Additionally, you can save a "default" mapping which is always restored
 upon power on of the computer.  This can be any of the 8 pre-programmed
@@ -183,9 +183,15 @@ TBD
 
 TBD
 
-## Change the drive mapping
+## Changing the drive mapping
 
 TBD
+
+## Using the disable switch
+
+To avoid unexpected behaivor (i.e accidents), if any drive is currently
+active when the disable switch is toggled, the mapping will not be changed.
+As soon as the drive stops, the new mapping state will take effect.
 
 ## Theory of operation
 
