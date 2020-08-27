@@ -8,23 +8,21 @@ This board dynamically remaps the floppy disk drives (numbered 0 through 3) in v
 TRS-80 Model 3, 4, and 4P computers.
 
 Additionally, this board adds support for two external floppy drives on Model 4P
-computers (which only support two internal drives).
-
-Note: A special floppy cable is required on the Model 4P which extends the floppy drive bus
-out of the back of the computer.  Instructions TBD.
+computers (which previously only supported two internal drives).
 
 The main reason for remapping the floppy drives on these computers
 is to enable booting from drives other than the fixed internal drive 0.  This is particualy
 useful when paired with an external floppy disk emulator.
 
-Remapping of the drives is selectable via software control using an "out" command, enabling one of eight
-pre-programmed floppy disk maps.  Software can also set the default power up mapping (if desired).
+Remapping of the drives is selectable via software using an "out" command in basic,
+enabling one of eight pre-programmed floppy disk maps.  You can also set the default power
+up mapping (if desired).
 
-A physical disable switch can installed which disables the selected floppy mapping.
+An optional disable switch can be installed, if desired.
 
-In order to install this board, the floppy drive controller's 74LS174 chip (a hex D flip-flop) must be removed
-and a 16 pin socket installed in its place.  This board replaces the function of the 74LS174.  Additionally, the
-model 4 Gate-array and model 4 non-gate array computers require a minor board modification.
+In order to install this board, one chip on the floppy disk controller
+board (or the main motherboard) needs to be removed and replaced by a socket.  Certain
+models require an additional minor motherboard modification (see below for details).
 
 **WARNING**: This is a hobby project, that I've done for fun, and am sharing my effort for others
 to enjoy.  This project requires some soldering and assumes you are very comfortable working around
@@ -100,6 +98,33 @@ the board.  Either way, this needs to be fixed. If you try to install the board
 into a computer, it will refuse to work (as the error status is saved into EEPROM).
 In order to re-run the tests, you must re-program the PIC.
 
+## LEDs
+
+The LEDs are just to tell you that the board is working and other useful information.
+Otherwise, they are completely optional (and you obviously can't see them when
+the computer is assembled).
+
+The Green enable LED will be lit whenever the disable switch is not closed.
+
+The Red row (and bank) lights show you which mapping is currently selected.
+For example, when the first row is lit (and the bank is off), then the mapping
+of drives is unchanged.  In other words, 0 maps to 0, 1 maps to 1, 2 maps to 2,
+and 3 maps to 3.  There are 8 pre-programmed possible drive mappings.
+
+Additionally, you can store a "default" mapping which is always selected
+upon power on of the computer.  This could be any of the 8 pre-programmed
+drive maps.  Note that the default mapping is not affected by a computer
+reset.  You can take advantage of this by temporarily changing the drive
+mapping and reseting the computer to force it to boot from another drive.
+Unless the mapping is saved, then the temporary mapping will be forgotten
+once the computer is powered off.
+
+Whenever the current mapping matches the "default" mapping which has been
+saved, the Blue light will be lit.
+
+Finally, the row light will flash periodically to indicate that the PIC
+controller is actually alive.
+
 ## Jumpers
 
 There are two jumpers on the board.
@@ -128,6 +153,14 @@ just like on the Model 3 and 4 computers.
 
 For Model 4 gate array and Model 4P non-gate array computers, an extra
 motherboard modification is required.  This is what the third pin on the
-output signal header is for.  Instructions TBD...
+output signal header is for.
+
+## Floppy cable build instructions (M4P only)
+
+## Change the drive mapping
+
+## Theory of operation
+
+
 
 
