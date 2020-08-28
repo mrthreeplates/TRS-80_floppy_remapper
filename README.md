@@ -188,11 +188,11 @@ On the Model 4P, you'd need a custom floppy cable which adds an external interfa
 
 Start with a 24" IDC 34-pin IDC extension cable.  This has a male and female 34 pin connector on each end:
 
-https://www.ebay.com/itm/24-inch-34-Pin-IDC-Floppy-Drive-Ribbon-Extension-Cable-Cord-CablesOnline-FF-004/270837785829?ssPageName=STRK%3AMEBIDX%3AIT&_trksid=p2057872.m2749.l2649
+https://www.ebay.com/itm/24-inch-34-Pin-IDC-Floppy-Drive-Ribbon-Extension-Cable-Cord-CablesOnline-FF-004/270837785829
 
 You also need two floppy drive connectors (34-pin card edge female IDC), I ordered a bag here:
 
-https://www.ebay.com/itm/5Pack-34-Pin-Card-Edge-Female-IDC-Connector-for-2-54mm-Pitch-Flat-Ribbon-Cable/272723281626?ssPageName=STRK%3AMEBIDX%3AIT&_trksid=p2057872.m2749.l2649
+https://www.ebay.com/itm/5Pack-34-Pin-Card-Edge-Female-IDC-Connector-for-2-54mm-Pitch-Flat-Ribbon-Cable/272723281626
 
 Steps:
 
