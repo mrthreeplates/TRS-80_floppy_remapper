@@ -201,9 +201,11 @@ Steps:
 1. Remove your existing floppy cable from the M4P.  This is useful for sizing purposes only.  You do not need to modify it.  Keep it for backup purposes!
 1. Carefully remove the female connector from 24" extension cable.  You need to reuse this connector.  Cut off the damaged part of the ribbon cable.
 1. (Using a vise) Carefully install two Female card edge connectors and the one female IDC connector (removed above) at approximately the same locations as your original floppy cable.  You'll now have a cable that looks like your original one, except that the cable continues past the female IDC connector providing an external male IDC connector.
-1. Look at your original floppy cable Female card edge connectors.  If you see that some connectors have been removed, you will have to remove the same connectors from the new cable.  This allows the connector to determine which drive is 0 and which drive is 1.  See the following:
+1. Look at your original floppy cable Female card edge connectors.  If you see that some connectors have been removed, you will have to remove the same connectors from the new cable.  This allows the connector to determine which drive is 0 and which drive is 1.  See the following image:
+
 ![floppy_card_edge](/images/floppy_card_edge.jpg)
-1. Using an X-acto knife, separate out drive select 0 and 1 (pins 10 and 12) from the floppy cable just after the female IDC connector.  These lines should lead towards the male IDC connector.  It is okay if you just cut pin 11 as it is a redundant ground.
+
+1. Using an X-acto knife, carefully separate out drive select 0 and 1 (pins 10 and 12) from the floppy cable just after the female IDC connector.  These lines should lead towards the male IDC connector.  It is okay if you just cut pin 11 as it is a redundant ground.
 1. Connect a two wire ribbon cable to pins 10 and 12.
 1. Connect the other end of the two pin ribbon cable to a 2 pin dupont header.
 
