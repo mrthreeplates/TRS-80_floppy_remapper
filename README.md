@@ -182,11 +182,9 @@ TBD
 
 ## Floppy cable instructions (Model 4P only)
 
-On the Model 4P, I built a custom floppy cable which adds an external interface for two floppy drives.
+On the Model 4P, I built a custom floppy cable which adds an external interface for two floppy drives.  It also connects to the remapper board, providing the drive select lines for the external drives:
 
 ![floppy_cable2](/images/floppy_cable2.jpg)
-
-![floppy_cable1](/images/floppy_cable1.jpg)
 
 Start with a 24" IDC 34-pin IDC extension cable.  This has a male and female 34 pin connector on each end:
 
@@ -199,9 +197,9 @@ https://www.ebay.com/itm/5Pack-34-Pin-Card-Edge-Female-IDC-Connector-for-2-54mm-
 Steps:
 
 1. Remove your existing floppy cable from the M4P.  This is useful for sizing purposes only.  You do not need to modify it.  Keep it for backup purposes!
-1. Carefully remove the female connector from 24" extension cable.  You need to reuse this connector.  Cut off the damaged part of the ribbon cable.
-1. (Using a vise) Carefully install two Female card edge connectors and the one female IDC connector (removed above) at approximately the same locations as your original floppy cable.  You'll now have a cable that looks like your original one, except that the cable continues past the female IDC connector providing an external male IDC connector.
-1. Look at your original floppy cable Female card edge connectors.  If you see that some connectors have been removed, you will have to remove the same connectors from the new cable.  This allows the connector to determine which drive is 0 and which drive is 1.  See the following image:
+1. Carefully remove the female connector from 24" extension cable.  You need to reuse this connector.  Trim off the damaged part of the ribbon cable.
+1. (Using a vise) Carefully install two Female card edge connectors and the one female IDC connector (removed above) at approximately the same locations (separation) as your original floppy cable.  You'll now have a cable that looks like your original, except that the cable continues past where it normally connects to the M4P motherboard.  This part will go out the back of the model 4P.
+1. Look at your original floppy cable Female card edge connectors.  If you see that some connectors have been removed (most likely), you will have to remove the same connectors from the new cable.  Mine pulled out with pliers easily.  The missing pins allows the connector to determine which drive is 0 and which drive is 1.  Look carefully at the following image noting the missing pins:
 
 ![floppy_card_edge](/images/floppy_card_edge.jpg)
 
@@ -209,11 +207,17 @@ Steps:
 1. Connect a two wire ribbon cable to pins 10 and 12.
 1. Connect the other end of the two pin ribbon cable to a 2 pin dupont header.
 
+The spliced in wire should like this (ignore the extra cuts on pins 6 and 14 I made, these aren't necessary):
+
+![floppy_cable1](/images/floppy_cable1.jpg)
+
 Installation:
 
 1. Install the completed cable into the M4P, replacing your original cable.
-1. Connect the dupont header to the floppy remapper board.  Note that pin 10 should connect to DS2 and pin 12 should connect to DS3.
-1. The rest of the floppy cable will be routed out the back of the M4P.
+1. Connect the dupont header to the floppy remapper board.  Note that pin 10 should connect to ~DS2 and pin 12 should connect to ~DS3.
+1. The rest of the floppy cable can be routed out the back of the M4P.
+
+![floppy_cable_back](/images/floppy_cable_back.jpg)
 
 ## Changing the drive mapping
 
