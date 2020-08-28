@@ -160,26 +160,6 @@ For Model 4 gate array and Model 4P non-gate array computers, an extra
 motherboard modification is required.  This is what the third pin on the
 output signal header is for (see below).
 
-## Installation in a Model 3 or Model 4 (non-gate array)
-
-TBD
-
-## Installation in a Model 4 Gate array
-
-![Model 4](/images/install-m4-v3.jpg)
-
-## Installation in a Model 4P Gate array
-
-![Model 4P](/images/install-m4p-v3.jpg)
-
-## Installation in a Model 4P (non-gate array)
-
-Sorry, I don't have one of these yet...
-
-## Other TRS-80 Models
-
-TBD
-
 ## Floppy cable instructions (Model 4P only)
 
 On the Model 4P, you'd need a custom floppy cable which adds an external interface for two floppy drives.  This also connects to the remapper board, providing the drive select lines for the external drives:
@@ -218,6 +198,26 @@ Installation:
 1. The rest of the floppy cable can be routed out the back of the M4P.
 
 ![floppy_cable_back](/images/floppy_cable_back.jpg)
+
+## Installation in a Model 3 or Model 4 (non-gate array)
+
+TBD
+
+## Installation in a Model 4 Gate array
+
+![Model 4](/images/install-m4-v3.jpg)
+
+## Installation in a Model 4P Gate array
+
+![Model 4P](/images/install-m4p-v3.jpg)
+
+## Installation in a Model 4P (non-gate array)
+
+Sorry, I don't have one of these yet...
+
+## Other TRS-80 Models
+
+TBD
 
 ## Changing the drive mapping
 
