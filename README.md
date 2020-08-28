@@ -182,7 +182,7 @@ TBD
 
 ## Floppy cable instructions (Model 4P only)
 
-On the Model 4P, I built a custom floppy cable which adds an external interface for two floppy drives.  It also connects to the remapper board, providing the drive select lines for the external drives:
+On the Model 4P, you'd need a custom floppy cable which adds an external interface for two floppy drives.  This also connects to the remapper board, providing the drive select lines for the external drives:
 
 ![floppy_cable2](/images/floppy_cable2.jpg)
 
@@ -197,8 +197,8 @@ https://www.ebay.com/itm/5Pack-34-Pin-Card-Edge-Female-IDC-Connector-for-2-54mm-
 Steps:
 
 1. Remove your existing floppy cable from the M4P.  This is useful for sizing purposes only.  You do not need to modify it.  Keep it for backup purposes!
-1. Carefully remove the female connector from 24" extension cable.  You need to reuse this connector.  Trim off the damaged part of the ribbon cable.
-1. (Using a vise) Carefully install two Female card edge connectors and the one female IDC connector (removed above) at approximately the same locations (separation) as your original floppy cable.  You'll now have a cable that looks like your original, except that the cable continues past where it normally connects to the M4P motherboard.  This part will go out the back of the model 4P.
+1. Carefully remove the female connector from the 24" extension cable.  You need to reuse this connector.  Trim off the damaged part of the ribbon cable.
+1. (Using a vise) carefully install two female card edge connectors and the one female IDC connector (removed above) at approximately the same locations (separation) as your original floppy cable.  You'll now have a cable that looks like your original, except that the cable continues past where it normally connects to the M4P motherboard.  This part will go out the back of the model 4P.
 1. Look at your original floppy cable Female card edge connectors.  If you see that some connectors have been removed (most likely), you will have to remove the same connectors from the new cable.  Mine pulled out with pliers easily.  The missing pins allows the connector to determine which drive is 0 and which drive is 1.  Look carefully at the following image noting the missing pins:
 
 ![floppy_card_edge](/images/floppy_card_edge.jpg)
