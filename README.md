@@ -47,7 +47,7 @@ http://www.vcfed.org/forum/showthread.php?75460-My-floppy-remapper-project-versi
 
 You can build a programmable image from source, or use the pre-built image I've supplied.
 
-[Programming files](/program): (MPLAB project source code and compiled HEX file)
+See: [Programming files](/program) (MPLAB project source code and compiled HEX file)
 
 How to build from source:
 
@@ -84,7 +84,7 @@ Connect the programmer and program the board:
    connected to the two "Run mode" jumper pins. 
 1. Click Program device in the IDE
 
-![prog-header-v3](/images/prog-header-v3.jpg)
+<br/>![prog-header-v3](/images/prog-header-v3.jpg)
 
 ## Board self tests
 
@@ -113,11 +113,11 @@ In order to re-run the tests, you must re-program the PIC.
 
 ![leds-v3](/images/leds-v3.jpg)
 
-The LEDs are there to tell you that the board is working and other useful information
-(and I need blikenlights).
+The LEDs are there to tell you that the board is alive, the current configuration,
+and I wanted blikenlights.
 
-Otherwise, they are optional (and you obviously can't see them when
-the computer is assembled).
+Otherwise, the LEDs are optional and could be removed.  Also, you obviously can't
+see them when the computer is assembled.
 
 The Green enable LED will be lit whenever the disable switch is not closed.
 
@@ -145,7 +145,7 @@ controller is actually alive.
 
 There are two jumpers on the back of the board (on the same header used for programming).
 
-![jumpers-v3](/images/jumpers-v3.jpg)
+<br/>![jumpers-v3](/images/jumpers-v3.jpg)
 
 The "Run mode" jumper must be installed before installing the floppy remapper board
 (i.e. whenever you aren't trying to program it).
@@ -180,7 +180,7 @@ output signal header is for (see installation instructions below).
 
 On the Model 4P, you'd need a custom floppy cable which adds an external interface for two floppy drives.  This also connects to the remapper board, providing the drive select lines for the external drives:
 
-![floppy_cable2](/images/floppy_cable2.jpg)
+<br/>![floppy_cable2](/images/floppy_cable2.jpg)
 
 Start with a 24" IDC 34-pin IDC extension cable.  This has a male and female 34 pin connector on each end:
 
@@ -197,7 +197,7 @@ Steps:
 1. (Using a vise) carefully install two female card edge connectors and the one female IDC connector (removed above) at approximately the same locations (separation) as your original floppy cable.  You'll now have a cable that looks like your original, except that the cable continues past where it normally connects to the M4P motherboard.  This part will go out the back of the model 4P.
 1. Look at your original floppy cable Female card edge connectors.  If you see that some connectors have been removed (most likely), you will have to remove the same connectors from the new cable.  Mine pulled out with pliers easily.  The missing pins allows the connector to determine which drive is 0 and which drive is 1.  Look carefully at the following image noting the missing pins:
 
-![floppy_card_edge](/images/floppy_card_edge.jpg)
+<br/>![floppy_card_edge](/images/floppy_card_edge.jpg)
 
 1. Using an X-acto knife, carefully separate out drive select 0 and 1 (pins 10 and 12) from the floppy cable just after the female IDC connector.  These lines should lead towards the male IDC connector.  It is okay if you just cut pin 11 as it is a redundant ground.
 1. Connect a two wire ribbon cable to pins 10 and 12.
@@ -205,7 +205,7 @@ Steps:
 
 The spliced in wire should like this (ignore the extra cuts on pins 6 and 14 I made, these aren't necessary):
 
-![floppy_cable1](/images/floppy_cable1.jpg)
+<br/>![floppy_cable1](/images/floppy_cable1.jpg)
 
 ## Installation of the socket for the remapper board (common on all models)
 
@@ -249,7 +249,7 @@ Steps:
 is to bring up a copy of the relevant schematic from your computer and check
 some pins with an ohmmeter.
 1. Here is an example from a M4P GA:
-![m4p-ga-schem](/images/m4p-ga-schem.jpg)
+<br/>![m4p-ga-schem](/images/m4p-ga-schem.jpg)
 1. The yellow circle highlights some of the key the floppy signals (such as drive select, etc).
 This tells us we are in the right area.
 1. The green circle highlights the actual floppy disk controller chip, and is also a good indicator we
@@ -263,7 +263,7 @@ above the blue circle shows that the DRVSEL line of the floppy support gate arra
 be connected directly to pin 9 of the 74LS174.  If you validate a few of these connections, you can
 be certain you have the right IC.
 Here is an image of my board with the correct IC circled in red:
-![m4p-ga-ic](/images/m4p-ga-ic.jpg)
+<br/>![m4p-ga-ic](/images/m4p-ga-ic.jpg)
 1. Carefully desolder the IC.  I used a desoldering tool to minimize damage to the
 board.  Clipping the pins off of the 74LS174 is easier, but destorys the chip.  Be careful
 not to damage any of the traces.
@@ -287,21 +287,19 @@ and it justifies my purchase of a fancy label maker (ok, this is the real reason
 
 Steps:
 1. Using a SPST switch, two-conductor wire, and a 2-pin dupont header, assemble a disable switch like what is shown below:
-![disable-switch](/images/disable-switch.jpg)
+<br/>![disable-switch](/images/disable-switch.jpg)
 1. Find a good place to mount the switch.  On my Model 3 and 4, I put them on the right side near the back.  The wire
 only has to be long enough to reach the remapper board.  On my Model 4P, I installed the switch in the recessed
 back compartment.
-![disable-switch](/images/disable-top.jpg)
+<br/>![disable-switch](/images/disable-top.jpg)
 2. For the sake of future owners, put a label on the switch (and so you don't forget what it does).
-![disable-switch](/images/disable-bottom.jpg)
+<br/>![disable-switch](/images/disable-bottom.jpg)
 
 ## Installation in a Model 3 or Model 4 (non-gate array)
 
 1. Disassemble your TRS-80 so that you have access to the floppy disk controller board.
 1. Install a socket for the remapper board (refer to instructions above).
-
-![Model 3](/images/install-m3-v3.jpg)
-
+<br/>![Model 3](/images/install-m3-v3.jpg)
 1. Connect a jumper on the back of the remapper board (labeled "Run mode").
 1. Plug in the remapper board into the socket.
 1. (optional) connect your disable switch to the remapper board.
@@ -314,11 +312,11 @@ back compartment.
 1. Install a socket for the remapper board (refer to instructions above).
 1. Connect a jumper on the back of the remapper board (labeled "Run mode").
 1. Plug in the remapper board into the socket.
-![Model 4ga](/images/install-m4ga-v3.jpg)
-1. Make a one pin jumper wire with a grabber connector on one end and dupont header on the other.
+<br/>![Model 4ga](/images/install-m4ga-v3.jpg)
+1. You will need to create a one pin jumper wire with a grabber connector on one end and dupont header on the other.
 This is the yellow wire in the image above.
-1. Now, open up a schematic of the M4 GA (RS cat 26-2119, figure 2-24):
-![Model 4ga schematic](/images/m4-ga-schem.jpg)
+1. Open up a schematic of the M4 GA (RS cat 26-2119, figure 2-24):
+<br/>![Model 4ga schematic](/images/m4-ga-schem.jpg)
 1. The 74LS174 is circled in red.  Note that there is a control line (EXTSEL)
 which selects between the internal and external floppy disk connectors. This is driven
 by the floppy disk gate array (U76, pin 20) and connects
@@ -347,10 +345,10 @@ modifying the motherboard.
 1. Install the custom floppy cable into the M4P, replacing your original cable.
 1. Connect the dupont header to the floppy remapper board.  Note that pin 10 should connect to ~DS2 and pin 12 should connect to ~DS3.
 The other pin on the output header is not used on the M4P GA:
-![Model 4P](/images/install-m4p-v3.jpg)
+<br/>![Model 4P](/images/install-m4p-v3.jpg)
 1. The rest of the floppy cable can be routed out the back of the M4P.
-![floppy_cable_back](/images/floppy_cable_back.jpg)
-1. (optional) connect your disable switch to the remapper board.
+<br/>![floppy_cable_back](/images/floppy_cable_back.jpg)
+1. (optional) connect your disable switch to the remapper board.  Note how the switch is mounted in the above picture.
 1. Put your TRS-80 back together.
 
 ## Installation in a Model 4P (non-gate array)
@@ -376,6 +374,3 @@ As soon as the drive stops, the new mapping state will take effect.
 ## Theory of operation
 
 TBD
-
-
-
