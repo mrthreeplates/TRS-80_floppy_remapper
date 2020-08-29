@@ -207,6 +207,9 @@ The spliced in wire should like this (ignore the extra cuts on pins 6 and 14 I m
 
 1. Disassemble your TRS-80 so that you have access to the floppy disk controller board.
 1. Locate the 74LS174 IC which handles the drive select lines.  On my model 3, this IC happened to be U6, however there are likely several different board revisions.  Make sure you locate the correct IC for your board revision.
+
+![Model 3](/images/install-m3-v3.jpg)
+
 1. Make sure there will be ample clearance to install the remapper board (i.e. it won't physically hit or short out anything).  If you aren't sure, stop.
 1. Desolder the 74LS174 and replace it with a 16-pin socket (preferably a nice one with machine pins).
 1. Plug in the remapper board into the socket.
@@ -218,6 +221,9 @@ The spliced in wire should like this (ignore the extra cuts on pins 6 and 14 I m
 1. Similar to the steps above, locate the 74LS174 IC.  This will be on the main motherboard.  On my system, this was U79 (yours may be different!)
 1. Make sure there will be ample clearance to install the remapper board (i.e. it won't physically hit or short out anything).  If you have a graphics
 board, check that too.  If you aren't sure things will fit, stop.
+
+![Model 4](/images/install-m4-v3.jpg)
+
 1. Make a simple one pin jumper with a grabber connector on one end and dupont header on the other.
 1. Desolder the 74LS174 and replace it with a 16-pin socket (preferably a nice one with machine pins).
 1. Plug in the remapper board into the socket.
@@ -225,8 +231,6 @@ board, check that too.  If you aren't sure things will fit, stop.
 1. Connect the grabber connector to pin 1 of U95.  Connect the other end to the EXTBUS output of the remapper board.
 1. (optional) connect a disable switch to the remapper board.  Locate the switch wherever you like (I put mine on the bottom).
 1. Put your TRS-80 back together.
-
-![Model 4](/images/install-m4-v3.jpg)
 
 ## Installation in a Model 4P Gate array
 
