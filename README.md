@@ -38,15 +38,16 @@ follow, or you won't damage your computer.  If this worries you at all, this pro
 
 http://www.vcfed.org/forum/showthread.php?75460-My-floppy-remapper-project-version-2
 
-## Project files
+## Design and PCB files (how to make boards)
 
 1. [design files](/design): (schematic and pin map)
 1. [PCB files](/design/pcb_info): (gerbers, bill of material, centroid)
-1. [Programming files](/program): (MPLAB project source code and compiled HEX file)
 
-## Project build instructions
+## Programming information
 
 You can build a programmable image from source, or use the pre-built image I've supplied.
+
+[Programming files](/program): (MPLAB project source code and compiled HEX file)
 
 How to build from source:
 
@@ -65,7 +66,7 @@ How to build using a prebuilt Hex file:
 1. Select "File" -> "Import" -> "Hex" and select the hex file from this repo.
 1. Finish creating a new project based on a PIC18F26Q10
 
-## Programming instructions for PICKit 4
+## Programming using a PICKit 4
 
 Note: This board has no external power supply.  In order to program it, power
 must be supplied by the programmer.
@@ -85,10 +86,10 @@ Connect the programmer and program the board:
 
 ![prog-header-v3](/images/prog-header-v3.jpg)
 
-## Post-programming self tests
+## Board self tests
 
-After programming (unless the PIC18 is held in reset) it will automatically boot and run a
-one-time-only series of self tests.  This is mostly to test the software and
+After programming (unless held in reset) the PIC will automatically boot and run a
+one-time series of self tests.  This is mostly to test the software and
 also verifies the PIC is working correctly.
 
 The LEDs will flash through a set of patterns which will take about 15 seconds.
