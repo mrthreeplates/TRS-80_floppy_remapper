@@ -35,6 +35,10 @@ electronics.  Deadly high voltage is present inside these computers, so please b
 instructions are complete, correct, easy to follow, you won't damage your computer, etc.
 If any of this worries you at all, this project isn't for you.
 
+## Model 4P GA booting directly from an external floppy emulator
+
+![Model 4P GA booting](/images/m4pga-boot.jpg)
+
 ### More information and background about this project:
 
 * [VCF Thread on V2 and V3](http://www.vcfed.org/forum/showthread.php?75460-My-floppy-remapper-project-version-2)
