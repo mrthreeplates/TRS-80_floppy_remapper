@@ -363,7 +363,43 @@ TBD
 
 ## Changing the drive mapping
 
-TBD
+Wow, you got this far, congratulations!  Here is the fun stuff.
+
+With the remapper board installed, you can change the drive mapping as follows.
+
+There are 8 pre-programmed and fixed floppy drive mappings numbered 0 through 7:
+
+Map number | Drive 0 | Drive 1 | Drive 2 | Drive 3 | Comment
+------------ | ------------- | ------------ | ----------- | ----------- | ----------
+#0 | 0 | 1 | 2 | 3 | No change to drive mapping or boot drive
+#1 | 1 | 0 | 2 | 3 | Swap drives 0 and 1 only, boot from drive 1
+#2 | 2 | 0 | 1 | 3 | Boot from drive 2
+#3 | 3 | 0 | 1 | 2 | Boot from drive 3
+#4 | 0 | 2 | 1 | 3 | Swap drives 1 and 2 only, boot from drive 0
+#5 | 1 | 2 | 0 | 3 | Boot from drive 1
+#6 | 2 | 3 | 0 | 1 | Swap 0/1 with 2/3, boot from drive 2
+#7 | 3 | 2 | 0 | 1 | Swap 0/1 with 3/2, boot from drive 3
+
+Whenever the disable switch is shorted, the remapper board will not affect the drive mapping (i.e map #0 is forced).
+
+Otherwise, the remapper board has a concept of a current map number and a default map number.
+
+At first power on (of the TRS-80), the default map number is restored from EEPROM.  This could be any of the 8 mappings.
+
+The current mapping as well as the default mapping is changed via an out instruction (most easily done in basic).  The formula to use is:
+
+out 244, 3 + map# * 4
+
+The change will take place immediately (as long as disable switch isn't shorted).
+
+Note that the current map will be remembered even if the TRS-80 reboots or is reset (as long as the remapper board has power).
+When the TRS-80 is powered off, the current map will be forgotten.
+
+If you want to also make a map# default for power up, then add 128 as follows:
+
+out 244, 3 + map# * 4 + 128
+
+If you can see the remapper board, the current enable state, current map #, and default map status will be visible on the LEDs.
 
 ## Using the disable switch
 
