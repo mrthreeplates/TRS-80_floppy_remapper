@@ -30,11 +30,10 @@ models require an additional minor motherboard modification (see below).
 My goal for this project was to enable the features above while
 requiring the fewest (and least invasive) modifications possible.
 
-**WARNING**: This is a hobby project, that I've done for fun, and am sharing my effort for others
-to enjoy.  This project requires some soldering and assumes you are very comfortable working around
-electronics.  Deadly high voltage is present on these computers!  Do not proceed if you don't know
-what you are doing!  I make no claim that these instructions are complete, correct, easy to
-follow, or you won't damage your computer.  If this worries you at all, this project isn't for you.
+**WARNING**: This project requires some soldering and assumes you are very comfortable working around
+electronics.  Deadly high voltage is present inside these computers, so please be safe!  I make no claim that these
+instructions are complete, correct, easy to follow, you won't damage your computer, etc.
+If any of this worries you at all, this project isn't for you.
 
 ### More information and background about this project:
 
@@ -46,11 +45,12 @@ follow, or you won't damage your computer.  If this worries you at all, this pro
 * [design files](/design): (schematic and pin map)
 * [PCB files](/design/pcb_info): (gerbers, bill of material, centroid)
 
-At this time, I don't have a way to order pre-assembled board.  However, all the
-files needed to have them made are listed above.
+Note: at this time, I don't have an easy way to order pre-assembled boards.  However, all the
+files needed to have them made are listed above.  FWIW: I've had good results using PCBWay for
+all of my prototypes.
 
 If you are looking to build the simpler version of my floppy switch (not programmable
-and without M4P / M4 GA support), you can read about it here
+and without M4P / M4 GA support), you can read about it here:
 * [V1 build info](http://www.vcfed.org/forum/showthread.php?70726-Booting-from-an-external-floppy-on-a-model-III&p=603230#post603230)
 
 ## V3 Programming information
