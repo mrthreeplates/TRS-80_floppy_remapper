@@ -72,11 +72,12 @@ must be supplied by the programmer.
 1. Select "power target circuit from PICKit 4"
 1. Click Apply
 
-Connect the programmer
+Connect the programmer and program the board:
 
 1. Connect the 6 pin programming header of the PICKit 4 to the remapper board.  Please be careful to orient
-   programming header to match the board pins!  Look for the MCLR pin with an arrow on it.
-1. Click program
+   programming header to match the board pins!  Look for the MCLR pin with an arrow on it.  The 6th pin
+   of the PICKit 4 header is not used and will not connect to anything.  This is okay.
+1. Click Program device in the IDE
 
 ![prog-header-v3](/images/prog-header-v3.jpg)
 
