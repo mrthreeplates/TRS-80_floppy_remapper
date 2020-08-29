@@ -312,14 +312,27 @@ back compartment.
 1. Install a socket for the remapper board (refer to instructions above).
 1. Connect a jumper on the back of the remapper board (labeled "Run mode").
 1. Plug in the remapper board into the socket.
-
-![Model 4](/images/install-m4-v3.jpg)
-
-1. Make a simple one pin jumper with a grabber connector on one end and dupont header on the other.
-1. Plug in the remapper board into the socket.
-1. WIP ... Locate the EXTBUS signal... this goes to pin 1 of ...., this is U95 on my board.  Cut the trace above pin 1 of U95
-1. Connect the grabber connector to pin 1 of U95.  Connect the other end to the EXTBUS output of the remapper board.
-1. Note: the remaining 2 pins on the output signal header are not used on the M4.
+![Model 4ga](/images/install-m4ga-v3.jpg)
+1. Make a one pin jumper wire with a grabber connector on one end and dupont header on the other.
+This is the yellow wire in the image above.
+1. Now, open up a schematic of the M4 GA (RS cat 26-2119, figure 2-24):
+![Model 4ga schematic](/images/m4-ga-schem.jpg)
+1. The 74LS174 is circled in red.  Note that there is a control line (EXTSEL)
+which selects between the internal and external floppy disk connectors. This is driven
+by the floppy disk gate array (U76, pin 20) and connects
+to an output mux (U95, pin 1).  Both ends are circled in blue.
+1. **Please confirm your board matches this schematic, or find the equivalent chips and pins.**  It is the
+output mux that the remapper needs to control.
+1. Cut the trace leading to pin 1, U95.  I did this just before U95, but
+it could be done anywhere between U76 and U95.
+1. WARNING: If you ever want to reverse
+this modification, you'll have to re-bridge this cut.  So you might
+want to think about your choices.  Another solution would be to socket U95
+and bend up pin 1.  There may be other creative solutions that avoid
+modifying the motherboard.
+1. Connect the grabber you created above to pin 1, U95.
+1. Connect the other end of the wire to the output signal pin labeled EXTSEL.
+1. Note: the remaining 2 pins on the output signal header are not used on the M4GA.
 1. (optional) connect your disable switch to the remapper board.
 1. Put your TRS-80 back together.
 
