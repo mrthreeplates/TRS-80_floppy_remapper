@@ -10,7 +10,7 @@ TRS-80 Model 3, 4, and 4P computers.
 The main reason for remapping the floppy drives on these computers
 is to enable booting from drives other than the fixed internal drive 0.  This is particualy
 useful when paired with a modern external floppy disk emulator such as
-the ![USB HxC emulator](http://hxc2001.free.fr/floppy_drive_emulator/).  This avoids the need
+the [USB HxC emulator](http://hxc2001.free.fr/floppy_drive_emulator/).  This avoids the need
 to take apart the computer, swap cables or replace your internal vintage floppy drives.
 
 Additionally, this board adds support for two external floppy drives on Model 4P
@@ -156,11 +156,11 @@ The "M4P mode" jumper should be installed when installing the flopper remapper
 into a TRS-80 Model 4P computer **and** you want to add support for external
 floppy drives.  Otherwise, this jumper can be left off.
 
-M4P mode (v.s. non-M4P mode) will be indicated by the flashing pattern of the
-row light.  When in M4P mode, the selected row light will "double" flash.  Otherwise
-the selected row light will slowly flash.
+The current mode ("M4P mode" v.s. non-M4P mode) will be indicated by the flashing pattern of the
+single row light which is illuminated.  When in M4P mode, the row light will do a quick "double" flash,
+otherwise it will flash slowly.
 
-The flashing of the row light also tells you that the MCU is heathy.
+The flashing of the row light also tells you that the MCU is alive and heathy.
 
 ## Front headers
 
