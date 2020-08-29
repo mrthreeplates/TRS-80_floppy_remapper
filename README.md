@@ -41,12 +41,19 @@ follow, or you won't damage your computer.  If this worries you at all, this pro
 * [VCF Thread on V2 and V3](http://www.vcfed.org/forum/showthread.php?75460-My-floppy-remapper-project-version-2)
 * [VCF Thread on V1](http://www.vcfed.org/forum/showthread.php?70726-Booting-from-an-external-floppy-on-a-model-III&p=606759#post606759)
 
-## Design and PCB files (how to make boards)
+## V3 Design and PCB files (how to make boards)
 
 * [design files](/design): (schematic and pin map)
 * [PCB files](/design/pcb_info): (gerbers, bill of material, centroid)
 
-## Programming information
+At this time, I don't have a way to order pre-assembled board.  However, all the
+files needed to have them made are listed above.
+
+If you are looking to build the simpler version of my floppy switch (not programmable
+and without M4P / M4 GA support), you can read about it here
+* [V1 build info](http://www.vcfed.org/forum/showthread.php?70726-Booting-from-an-external-floppy-on-a-model-III&p=603230#post603230)
+
+## V3 Programming information
 
 You can build a programmable image from source, or use the pre-built image I've supplied.
 
