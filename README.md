@@ -89,6 +89,8 @@ The LEDs will flash through a set of patterns which will take about 15 seconds.
 At the end, all of the LEDs should remain lit, with the enable LED flashing slowly.
 This indicates the tests passed and confirms all the LEDs are working.
 
+![programming-v3](/images/programming-v3.mp4)
+
 The next time the PIC boots, it will assume it has been installed into a TRS-80 and
 will start working normally.  If you boot the PIC without having it installed, the
 board may behave unpredictably due to floating inputs (although there is no harm).
