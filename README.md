@@ -215,18 +215,23 @@ controller board or motherboard (depending on your model).  You need to locate t
 one 74LS174) on your model of computer.  As there are differences between board revisions,
 even for the same model of computer, I cannot tell you which chip (i.e. Uxx) is the correct one.
 To make matters worse, there are errors in the Radio Shack schematics which incorrectly label some
-of these chips.  These schematics may not account for board revisions.  However, I'll list what I know
-and offer some ways to confirm you have the right IC.  This is just a long way of saying double
-check your work before you start!
+of these chips.  Also, these schematics may not account for board revisions.  However, I'll list what I know
+and offer some ways to confirm you have the right IC.  **This is just a long way of saying double
+check you have the right IC before you start!**
 1. Depending upon which model of TRS-80 you have (and what options), there isn't much room
 to install the remapper board (considering adjacent components, vertical clearance, etc).
-In particular, the graphics boards on the Model 4/4P do
-come very close to the remapper board.  I've carefully designed the PCB so that it works in all of the
-computers that I have to test (or have seen from on-line images).  However, it is possible
+In particular, the graphics boards on the Model 4/4P and serial board on the M4P, do
+come very close to the remapper board.  I've tried to carefully design the PCB so that it works in all of the
+computers that I have.  However, it is possible
 that it won't work for you.  So the first issue you need to be concerned about is the fit
-and to ensure that nothing will rub, touch or potentially short out.  I'd suggest doing this
-before trying to install the socket as you can save yourself some trouble later.  The nice
-think about a socket is that you could always install a new 74LS174 back into the socket
+and to ensure that nothing will rub, touch or potentially short out.  **Again, a long way of saying,
+double check the physical fit of the remapper board before you start (especially on the M4P)!**.
+1. If there is any possibility of a short between the remapper board and something close by,
+use some insulation (like kapton tape), just to be safe.  Pay close attention to the M4P as it
+is very tight when assembled.
+1. It is likely, unless you are very careful, you may destroy your 74LS174 when removing it from the board.
+It is a good idea to have a few known good spares (and extra sockets), just in case.
+1. The nice thing about installing a socket is that you can always put a new 74LS174 back in
 to revert this modification.
 
 WIP, still editing.. ignore this
