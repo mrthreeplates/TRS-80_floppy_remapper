@@ -236,11 +236,13 @@ to revert this modification.
 
 For reference, here are the IC numbers from my computers (your computer may be different!):
 
-Computer | Board revision | IC
------------- | ------------- | ------------
-TRS-80 M3 | unknown | U6
-TRS-80 M4 GA | unknown | U79
-TRS-80 M4P GA | unknown | U34
+Computer | Revision | IC to socket | Other mods needed
+------------ | ------------- | ------------ | -----------
+TRS-80 M3 | unknown | U6 | None
+TRS-80 M4 non-GA | ? | ? | None
+TRS-80 M4 GA | unknown | U79 | cut trace to U95, pin 1
+TRS-80 M4P non-GA | ? | ? | tbd
+TRS-80 M4P GA | unknown | U34 | None
 
 Steps:
 1. Locate the 74LS174 IC which handles the drive select lines.  The best way to be certain
@@ -331,7 +333,7 @@ want to think about your choices.  Another solution would be to socket U95
 and bend up pin 1.  There may be other creative solutions that avoid
 modifying the motherboard.
 1. Connect the grabber you created above to pin 1, U95.
-1. Connect the other end of the wire to the output signal pin labeled EXTSEL.
+1. Connect the other end of the wire to the output signal pin on the remapper board labeled EXTSEL.
 1. Note: the remaining 2 pins on the output signal header are not used on the M4GA.
 1. (optional) connect your disable switch to the remapper board.
 1. Put your TRS-80 back together.
