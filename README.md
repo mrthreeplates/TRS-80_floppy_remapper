@@ -9,7 +9,9 @@ TRS-80 Model 3, 4, and 4P computers.
 
 The main reason for remapping the floppy drives on these computers
 is to enable booting from drives other than the fixed internal drive 0.  This is particualy
-useful when paired with a modern external floppy disk emulator.
+useful when paired with a modern external floppy disk emulator such as
+the ![USB HxC emulator](http://hxc2001.free.fr/floppy_drive_emulator/).  This avoids the need
+to take apart the computer, swap cables or replace your internal vintage floppy drives.
 
 Additionally, this board adds support for two external floppy drives on Model 4P
 computers (which previously only supported two internal drives).  Inspiration for
@@ -308,7 +310,7 @@ back compartment.
 
 ## Installation in a Model 4 Gate array
 
-1. Disassemble your TRS-80 so that you have access to the motherboard board.
+1. Disassemble your TRS-80 so that you have access to the motherboard.
 1. Install a socket for the remapper board (refer to instructions above).
 1. Connect a jumper on the back of the remapper board (labeled "Run mode").
 1. Plug in the remapper board into the socket.
@@ -338,7 +340,7 @@ modifying the motherboard.
 
 ## Installation in a Model 4P Gate array
 
-1. Disassemble your TRS-80 so that you have access to the motherboard board.
+1. Disassemble your TRS-80 so that you have access to the motherboard.
 1. Install a socket for the remapper board (refer to instructions above).
 1. Connect two jumpers on the back of the remapper board (labeled "Run mode" and "M4P mode") .
 1. Plug in the remapper board into the socket.
@@ -365,9 +367,7 @@ TBD
 
 Wow, you got this far, congratulations!  Here is the fun stuff.
 
-With the remapper board installed, you can change the drive mapping as follows.
-
-There are 8 pre-programmed and fixed floppy drive mappings numbered 0 through 7:
+There are 8 pre-programmed (fixed) floppy drive mappings numbered 0 through 7:
 
 Map number | Drive 0 | Drive 1 | Drive 2 | Drive 3 | Comment
 ------------ | ------------- | ------------ | ----------- | ----------- | ----------
@@ -380,17 +380,30 @@ Map number | Drive 0 | Drive 1 | Drive 2 | Drive 3 | Comment
 #6 | 2 | 3 | 0 | 1 | Swap 0/1 with 2/3, boot from drive 2
 #7 | 3 | 2 | 0 | 1 | Swap 0/1 with 3/2, boot from drive 3
 
-Whenever the disable switch is shorted, the remapper board will not affect the drive mapping (i.e map #0 is forced).
+While other drive mappings are possible (24 to be exact), I think
+restricting the possibilities to 8 of the most useful is a
+reasonable trade-off to gain simplicity.  If your favorite
+mapping isn't listed above, the source code can always be modified
+as it is just a table in C.
 
-Otherwise, the remapper board has a concept of a current map number and a default map number.
+First of all, whenever the disable switch is shorted, the remapper board
+will not affect the drive mapping (i.e map #0 is forced).
 
-At first power on (of the TRS-80), the default map number is restored from EEPROM.  This could be any of the 8 mappings.
+Otherwise, the remapper board maintains both the current map number
+and a default map number.
 
-The current mapping as well as the default mapping is changed via an out instruction (most easily done in basic).  The formula to use is:
+At first power on (of the TRS-80), the default map number is restored from EEPROM.
+This could be any of the 8 mappings.  Upon first programming the PIC, this
+default map number is 0.
+
+The current mapping as well as the default mapping is changed via an out instruction
+(most easily done in basic).  The formula to use is:
 
 out 244, 3 + map# * 4
 
-The change will take place immediately (as long as disable switch isn't shorted).
+The change will take place immediately (as long as disable switch isn't shorted).  The
+drive motors will turn on for 2 seconds as a harmless side effect (see Theory of operation
+below for what is really going on).
 
 Note that the current map will be remembered even if the TRS-80 reboots or is reset (as long as the remapper board has power).
 When the TRS-80 is powered off, the current map will be forgotten.
@@ -399,9 +412,34 @@ If you want to also make a map# default for power up, then add 128 as follows:
 
 out 244, 3 + map# * 4 + 128
 
-If you can see the remapper board, the current enable state, current map #, and default map status will be visible on the LEDs.
+If you can actually see the remapper board, the current enable state, current map #,
+and default map status will be visible on the LEDs.  This lets you confirm the out
+instruction is doing what you want (and is kinda fun).  This is most easily done
+on the Model 4 GA (and harder to do on the M4P and M3/M4 non GA).
+
+It is likely a good idea to reset the computer after changing the drive mapping
+or else you may confuse whatever DOS your are running.
+
+If you want to verify that the mapping is as you expect, you can always use the dir
+command or even the out instruction:
+
+Command | effect
+--------| -------
+out 244, 1 | turn on drive 0 for 2 seconds
+out 244, 2 | turn on drive 1 for 2 seconds
+out 244, 4 | turn on drive 2 for 2 seconds
+out 244, 8 | turn on drive 3 for 2 seconds
+
+Don't try to set more than one drive at a time with the above command, as this is the "trick"
+to how the remapper works.
+
+Also, never issue an out 244 command while a drive is in use (if this
+is even possible).  This would likely have unintended consequences (i.e. could
+corrupt whatever i/o is in progress).
 
 ## Using the disable switch
+
+The switch should behave as you expect, with one caveat.
 
 To avoid unexpected behaivor (i.e accidents), if any drive is currently
 active when the disable switch is toggled, the mapping will not be changed.
