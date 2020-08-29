@@ -9,7 +9,7 @@ TRS-80 Model 3, 4, and 4P computers.
 
 The main reason for remapping the floppy drives on these computers
 is to enable booting from drives other than the fixed internal drive 0.  This is particualy
-useful when paired with a mondern external floppy disk emulator.
+useful when paired with a modern external floppy disk emulator.
 
 Additionally, this board adds support for two external floppy drives on Model 4P
 computers (which previously only supported two internal drives).  Inspiration for
@@ -234,7 +234,7 @@ It is a good idea to have a few known good spares (and extra sockets), just in c
 1. The nice thing about installing a socket is that you can always put a new 74LS174 back in
 to revert this modification.
 
-IC numbers from my computers (for reference only, your computer may be different!):
+For reference, here are the IC numbers from my computers (your computer may be different!):
 
 Computer | Board revision | IC
 ------------ | ------------- | ------------
@@ -245,26 +245,27 @@ TRS-80 M4P GA | unknown | U34
 Steps:
 1. Locate the 74LS174 IC which handles the drive select lines.  The best way to be certain
 is to bring up a copy of the relevant schematic from your computer and check
-some pins with an ohmmeter. Here is an example from a M4 GA:
+some pins with an ohmmeter.
+1. Here is an example from a M4P GA:
 ![m4p-ga-schem](/images/m4p-ga-schem.jpg)
 1. The yellow circle highlights some of the key the floppy signals (such as drive select, etc).
 This tells us we are in the right area.
-1. The green circle highlights the actual floppy disk controller chip, also a good indicator we
+1. The green circle highlights the actual floppy disk controller chip, and is also a good indicator we
 are in the right place.
 1. Finally, the red circle represents the 74LS174 which latches the floppy signals.  This is the IC we want
 want to remove and replace with a socket.
-1. Note that if you look at the Uxx on the schematic, it is not correct (at least for my board)!
+1. Note that if you look at the reference designator on my schematic (U54), it does not match my board.
 This kind of mistake is easy to spot since we are looking for a 74LS174.
-1. Confirm you have the right IC by checking the connections with adjacent chips.  In the image
+1. Confirm you have the right IC by checking the connections with adjacent chips.  For example, in the schematic
 above the blue circle shows that the DRVSEL line of the floppy support gate array (pin 15) should
-be connected to pin 9 of the 74LS174.  If you validate a few of these connections, you can
-be sure you have the right IC.
-Here is an image of my board with the correct IC circled in red
+be connected directly to pin 9 of the 74LS174.  If you validate a few of these connections, you can
+be certain you have the right IC.
+Here is an image of my board with the correct IC circled in red:
 ![m4p-ga-ic](/images/m4p-ga-ic.jpg)
-1. Carefully desolder the IC.  I used a desoldering tool so as to minimize damage to the
-board.  Clipping the pins off of the 74LS174 is easier, but destorys the chip.  Becareful
+1. Carefully desolder the IC.  I used a desoldering tool to minimize damage to the
+board.  Clipping the pins off of the 74LS174 is easier, but destorys the chip.  Be careful
 not to damage any of the traces.
-1. Solder in a nice replacement socket, preferably one with machine pins.
+1. Solder in a quality replacement socket, preferably one with machine pins.
 1. If you want to double check that you haven't damaged anything, you can insert the
 74LS174 back in to confirm that your computer still works.
 
