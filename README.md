@@ -18,10 +18,10 @@ computers (which previously only supported two internal drives).  Inspiration fo
 this feature came from a [January 1986 80 Micro article](https://colorcomputerarchive.com/repo/Documents/Magazines/80%20Micro/1986/80%20Micro%20-%208601%20-%20January%201986.pdf), while significantly reducing the number of board modifications needed.
 
 Remapping of the drives is selectable via software using a simple "out" command in basic,
-enabling one of eight pre-programmed floppy disk maps.  You can also set the default power
-up mapping (if desired).
+enabling one of eight pre-programmed floppy disk maps.  You can also save the default power
+up mapping.
 
-An optional disable switch can be installed, if desired.
+An optional disable switch can be installed.
 
 In order to install this board, one chip on the floppy disk controller
 board (or the main motherboard) needs to be replaced by a socket.  Certain
