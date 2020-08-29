@@ -38,12 +38,13 @@ follow, or you won't damage your computer.  If this worries you at all, this pro
 
 ### More information and background about this project:
 
-http://www.vcfed.org/forum/showthread.php?75460-My-floppy-remapper-project-version-2
+* [VCF Thread on V2 and V3](http://www.vcfed.org/forum/showthread.php?75460-My-floppy-remapper-project-version-2)
+* [VCF Thread on V1](http://www.vcfed.org/forum/showthread.php?70726-Booting-from-an-external-floppy-on-a-model-III&p=606759#post606759)
 
 ## Design and PCB files (how to make boards)
 
-1. [design files](/design): (schematic and pin map)
-1. [PCB files](/design/pcb_info): (gerbers, bill of material, centroid)
+* [design files](/design): (schematic and pin map)
+* [PCB files](/design/pcb_info): (gerbers, bill of material, centroid)
 
 ## Programming information
 
@@ -350,7 +351,7 @@ The other pin on the output header is not used on the M4P GA:
 <br/>![Model 4P](/images/install-m4p-v3.jpg)
 1. The rest of the floppy cable can be routed out the back of the M4P.
 <br/>![floppy_cable_back](/images/floppy_cable_back.jpg)
-1. (optional) connect your disable switch to the remapper board.  Note how the switch is mounted in the above picture.
+1. (optional) connect your disable switch to the remapper board.  Note how the disable switch is mounted in the above picture.
 1. Put your TRS-80 back together.
 
 ## Installation in a Model 4P (non-gate array)
