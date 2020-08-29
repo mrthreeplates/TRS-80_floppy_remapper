@@ -234,18 +234,39 @@ It is a good idea to have a few known good spares (and extra sockets), just in c
 1. The nice thing about installing a socket is that you can always put a new 74LS174 back in
 to revert this modification.
 
-WIP, still editing.. ignore this
+IC numbers from my computers (for reference only, your computer may be different!):
 
-1. Locate the 74LS174 IC which handles the drive select lines.  On my model 3, this IC happened to be U6, however there are likely several different board revisions.  Make sure you locate the correct IC for your board revision.
-1. Similar to the steps above, locate the 74LS174 IC.  This will be on the main motherboard.  On my system, this was U79 (yours may be different!)
-1. Make sure there will be ample clearance to install the remapper board (i.e. it won't physically hit or short out anything).  If you have a graphics
-board, check that too.  If you aren't sure things will fit, stop.
-1. Similar to the steps above, locate the 74LS174 IC.  This will be on the main motherboard.  On my system, this was U34 (yours may be different!)
-1. Make sure there will be ample clearance to install the remapper board (i.e. it won't physically hit or short out anything).  If you have a graphics
-board, check that too.  If you aren't sure things will fit, stop.
-1. Desolder the 74LS174 and replace it with a 16-pin socket (preferably a nice one with machine pins).
-1. Make sure there will be ample clearance to install the remapper board (i.e. it won't physically hit or short out anything).  If you aren't sure, stop.
-1. Desolder the 74LS174 and replace it with a 16-pin socket (preferably a nice one with machine pins).
+Computer | Board revision | IC
+------------ | ------------- | ------------
+TRS-80 M3 | unknown | U6
+TRS-80 M4 GA | unknown | U79
+TRS-80 M4P GA | unknown | U34
+
+Steps:
+1. Locate the 74LS174 IC which handles the drive select lines.  The best way to be certain
+is to bring up a copy of the relevant schematic from your computer and check
+some pins with an ohmmeter. Here is an example from a M4 GA:
+![m4p-ga-schem](/images/m4p-ga-schem.jpg)
+1. The yellow circle highlights some of the key the floppy signals (such as drive select, etc).
+This tells us we are in the right area.
+1. The green circle highlights the actual floppy disk controller chip, also a good indicator we
+are in the right place.
+1. Finally, the red circle represents the 74LS174 which latches the floppy signals.  This is the IC we want
+want to remove and replace with a socket.
+1. Note that if you look at the Uxx on the schematic, it is not correct (at least for my board)!
+This kind of mistake is easy to spot since we are looking for a 74LS174.
+1. Confirm you have the right IC by checking the connections with adjacent chips.  In the image
+above the blue circle shows that the DRVSEL line of the floppy support gate array (pin 15) should
+be connected to pin 9 of the 74LS174.  If you validate a few of these connections, you can
+be sure you have the right IC.
+Here is an image of my board with the correct IC circled in red
+![m4p-ga-ic](/images/m4p-ga-ic.jpg)
+1. Carefully desolder the IC.  I used a desoldering tool so as to minimize damage to the
+board.  Clipping the pins off of the 74LS174 is easier, but destorys the chip.  Becareful
+not to damage any of the traces.
+1. Solder in a nice replacement socket, preferably one with machine pins.
+1. If you want to double check that you haven't damaged anything, you can insert the
+74LS174 back in to confirm that your computer still works.
 
 ## Installation of an (optional) disable switch (common on all models)
 
