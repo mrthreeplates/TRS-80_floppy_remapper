@@ -78,6 +78,8 @@ Connect the programmer
    programming header to match the board pins!  Look for the MCLR pin with an arrow on it.
 1. Click program
 
+![prog-header-v3](/images/prog-header-v3.jpg)
+
 ## Post-programming self tests
 
 After programming (unless the PIC18 is held in reset) it will automatically boot and run a
@@ -89,7 +91,7 @@ The LEDs will flash through a set of patterns which will take about 15 seconds.
 At the end, all of the LEDs should remain lit, with the enable LED flashing slowly.
 This indicates the tests passed and confirms all the LEDs are working.
 
-![programming-v3](/images/programming-v3.mp4)
+Download programming video here: ![programming-v3](/images/programming-v3.mp4)
 
 The next time the PIC boots, it will assume it has been installed into a TRS-80 and
 will start working normally.  If you boot the PIC without having it installed, the
@@ -102,6 +104,8 @@ into a computer, it will refuse to work (as the error status is saved into EEPRO
 In order to re-run the tests, you must re-program the PIC.
 
 ## Front LEDs
+
+![leds-v3](/images/leds-v3.jpg)
 
 The LEDs are there to tell you that the board is working and other useful information
 (and I need blikenlights).
@@ -135,7 +139,9 @@ controller is actually alive.
 
 There are two jumpers on the back of the board (on the same header used for programming).
 
-The run jumper must be installed before installing the floppy remapper board
+![jumpers-v3](/images/jumpers-v3.jpg)
+
+The "Run mode" jumper must be installed before installing the floppy remapper board
 (i.e. whenever you aren't trying to program it).
 
 The "M4P mode" jumper should be installed when installing the flopper remapper
@@ -150,6 +156,8 @@ The flashing of the row light also tells you that the MCU is heathy.
 
 ## Front headers
 
+![front-header-v3](/images/front-header-v3.jpg)
+
 An optional disable switch (e.g. SPST) may be installed.  When these pins
 are shorted, floppy drive re-mapping will be disabled.
 
@@ -160,7 +168,7 @@ just like on the Model 3 and 4 computers.
 
 For Model 4 gate array and Model 4P non-gate array computers, an extra
 motherboard modification is required.  This is what the third pin on the
-output signal header is for (see below).
+output signal header is for (see installation instructions below).
 
 ## Floppy cable build instructions (Model 4P only)
 
