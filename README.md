@@ -207,43 +207,88 @@ The spliced in wire should like this (ignore the extra cuts on pins 6 and 14 I m
 
 ![floppy_cable1](/images/floppy_cable1.jpg)
 
-## Installation in a Model 3 or Model 4 (non-gate array)
+## Installation of the socket for the remapper board (common on all models)
 
-1. Disassemble your TRS-80 so that you have access to the floppy disk controller board.
+Important notes before you get started:
+1. The remapper board replaces (emulates) a 74LS174 Hex D-Flip flop on the floppy
+controller board or motherboard (depending on your model).  You need to locate this specific IC (in case there are more than
+one 74LS174) on your model of computer.  As there are differences between board revisions,
+even for the same model of computer, I cannot tell you which chip (i.e. Uxx) is the correct one.
+To make matters worse, there are errors in the Radio Shack schematics which incorrectly label some
+of these chips.  These schematics may not account for board revisions.  However, I'll list what I know
+and offer some ways to confirm you have the right IC.  This is just a long way of saying double
+check your work before you start!
+1. Depending upon which model of TRS-80 you have (and what options), there isn't much room
+to install the remapper board (considering adjacent components, vertical clearance, etc).
+In particular, the graphics boards on the Model 4/4P do
+come very close to the remapper board.  I've carefully designed the PCB so that it works in all of the
+computers that I have to test (or have seen from on-line images).  However, it is possible
+that it won't work for you.  So the first issue you need to be concerned about is the fit
+and to ensure that nothing will rub, touch or potentially short out.  I'd suggest doing this
+before trying to install the socket as you can save yourself some trouble later.  The nice
+think about a socket is that you could always install a new 74LS174 back into the socket
+to revert this modification.
+
+WIP, still editing.. ignore this
+
 1. Locate the 74LS174 IC which handles the drive select lines.  On my model 3, this IC happened to be U6, however there are likely several different board revisions.  Make sure you locate the correct IC for your board revision.
-
-![Model 3](/images/install-m3-v3.jpg)
-
-1. Make sure there will be ample clearance to install the remapper board (i.e. it won't physically hit or short out anything).  If you aren't sure, stop.
-1. Desolder the 74LS174 and replace it with a 16-pin socket (preferably a nice one with machine pins).
-1. Plug in the remapper board into the socket.
-1. (optional) connect a disable switch to the remapper board.  Locate the switch wherever you like (I put mine on the bottom).
-1. Put your TRS-80 back together.
-
-## Installation in a Model 4 Gate array
-
 1. Similar to the steps above, locate the 74LS174 IC.  This will be on the main motherboard.  On my system, this was U79 (yours may be different!)
 1. Make sure there will be ample clearance to install the remapper board (i.e. it won't physically hit or short out anything).  If you have a graphics
 board, check that too.  If you aren't sure things will fit, stop.
-
-![Model 4](/images/install-m4-v3.jpg)
-
-1. Make a simple one pin jumper with a grabber connector on one end and dupont header on the other.
-1. Desolder the 74LS174 and replace it with a 16-pin socket (preferably a nice one with machine pins).
-1. Plug in the remapper board into the socket.
-1. WIP ... Locate the EXTBUS signal... this goes to pin 1 of ...., this is U95 on my board.  Cut the trace above pin 1 of U95
-1. Connect the grabber connector to pin 1 of U95.  Connect the other end to the EXTBUS output of the remapper board.
-1. (optional) connect a disable switch to the remapper board.  Locate the switch wherever you like (I put mine on the bottom).
-1. Put your TRS-80 back together.
-
-## Installation in a Model 4P Gate array
-
 1. Similar to the steps above, locate the 74LS174 IC.  This will be on the main motherboard.  On my system, this was U34 (yours may be different!)
 1. Make sure there will be ample clearance to install the remapper board (i.e. it won't physically hit or short out anything).  If you have a graphics
 board, check that too.  If you aren't sure things will fit, stop.
 1. Desolder the 74LS174 and replace it with a 16-pin socket (preferably a nice one with machine pins).
+1. Make sure there will be ample clearance to install the remapper board (i.e. it won't physically hit or short out anything).  If you aren't sure, stop.
+1. Desolder the 74LS174 and replace it with a 16-pin socket (preferably a nice one with machine pins).
+
+## Installation of a disable switch (common on all models, but optional)
+
+WIP, still editing.
+
+1. As the floppy maps are software selectable, having an
+external switch to disable the board isn't strictly necessary.  However, I find it convenient.  The downside is
+that you likely need to drill a hole into your case and you have more hardware to install.
+1. WARNING: The M4P does have one quirk in that it does not have BASIC built into ROM.  This means
+that you could theoretically get yourself into trouble with the remappper board if you configured it
+to boot from a non-existant floppy (and saved it as your power on default).  If you did this
+and were unable to boot, then you'd have no way to enter BASIC to issue an out command
+to switch back to booting from your internal drives.  This might be a reason to install
+a disable switch on a M4P.
+1. I like physical switches so I've installed them anyway.  IMO: the case mod is minor (one hidden drill hole),
+and it justifies my purchase of a label maker (the real reason).
+
+## Installation in a Model 3 or Model 4 (non-gate array)
+
+1. Disassemble your TRS-80 so that you have access to the floppy disk controller board.
+1. Install a socket for the remapper board (refer to instructions above).
+
+![Model 3](/images/install-m3-v3.jpg)
+
 1. Plug in the remapper board into the socket.
-1. (optional) connect a disable switch to the remapper board.  Locate the switch wherever you like (I put mine on the bottom).
+1. (optional) connect your disable switch to the remapper board.
+1. Put your TRS-80 back together.
+
+## Installation in a Model 4 Gate array
+
+1. Disassemble your TRS-80 so that you have access to the motherboard board.
+1. Install a socket for the remapper board (refer to instructions above).
+1. Plug in the remapper board into the socket.
+
+![Model 4](/images/install-m4-v3.jpg)
+
+1. Make a simple one pin jumper with a grabber connector on one end and dupont header on the other.
+1. Plug in the remapper board into the socket.
+1. WIP ... Locate the EXTBUS signal... this goes to pin 1 of ...., this is U95 on my board.  Cut the trace above pin 1 of U95
+1. Connect the grabber connector to pin 1 of U95.  Connect the other end to the EXTBUS output of the remapper board.
+1. (optional) connect your disable switch to the remapper board.
+1. Put your TRS-80 back together.
+
+## Installation in a Model 4P Gate array
+
+1. Disassemble your TRS-80 so that you have access to the motherboard board.
+1. Install a socket for the remapper board (refer to instructions above).
+1. Plug in the remapper board into the socket.
 1. Install the custom floppy cable into the M4P, replacing your original cable.
 1. Connect the dupont header to the floppy remapper board.  Note that pin 10 should connect to ~DS2 and pin 12 should connect to ~DS3.
 
@@ -252,6 +297,9 @@ board, check that too.  If you aren't sure things will fit, stop.
 1. The rest of the floppy cable can be routed out the back of the M4P.
 
 ![floppy_cable_back](/images/floppy_cable_back.jpg)
+
+1. (optional) connect your disable switch to the remapper board.
+1. Put your TRS-80 back together.
 
 ## Installation in a Model 4P (non-gate array)
 
