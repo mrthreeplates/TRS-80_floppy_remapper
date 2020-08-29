@@ -25,6 +25,9 @@ In order to install this board, one chip on the floppy disk controller
 board (or the main motherboard) needs to be replaced by a socket.  Certain
 models require an additional minor motherboard modification (see below).
 
+My goal for this project was to enable the features above while
+requiring the fewest (and least invasive) modifications possible.
+
 **WARNING**: This is a hobby project, that I've done for fun, and am sharing my effort for others
 to enjoy.  This project requires some soldering and assumes you are very comfortable working around
 electronics.  Deadly high voltage is present on these computers!  Do not proceed if you don't know
