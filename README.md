@@ -300,14 +300,17 @@ back compartment.
 
 ![Model 3](/images/install-m3-v3.jpg)
 
+1. Connect a jumper on the back of the remapper board (labeled "Run mode").
 1. Plug in the remapper board into the socket.
 1. (optional) connect your disable switch to the remapper board.
+1. Note: The 3-pin output signals on the remapper board are not needed for this computer.
 1. Put your TRS-80 back together.
 
 ## Installation in a Model 4 Gate array
 
 1. Disassemble your TRS-80 so that you have access to the motherboard board.
 1. Install a socket for the remapper board (refer to instructions above).
+1. Connect a jumper on the back of the remapper board (labeled "Run mode").
 1. Plug in the remapper board into the socket.
 
 ![Model 4](/images/install-m4-v3.jpg)
@@ -316,6 +319,7 @@ back compartment.
 1. Plug in the remapper board into the socket.
 1. WIP ... Locate the EXTBUS signal... this goes to pin 1 of ...., this is U95 on my board.  Cut the trace above pin 1 of U95
 1. Connect the grabber connector to pin 1 of U95.  Connect the other end to the EXTBUS output of the remapper board.
+1. Note: the remaining 2 pins on the output signal header are not used on the M4.
 1. (optional) connect your disable switch to the remapper board.
 1. Put your TRS-80 back together.
 
@@ -323,22 +327,22 @@ back compartment.
 
 1. Disassemble your TRS-80 so that you have access to the motherboard board.
 1. Install a socket for the remapper board (refer to instructions above).
+1. Connect two jumpers on the back of the remapper board (labeled "Run mode" and "M4P mode") .
 1. Plug in the remapper board into the socket.
 1. Install the custom floppy cable into the M4P, replacing your original cable.
 1. Connect the dupont header to the floppy remapper board.  Note that pin 10 should connect to ~DS2 and pin 12 should connect to ~DS3.
-
+The other pin on the output header is not used on the M4P GA:
 ![Model 4P](/images/install-m4p-v3.jpg)
-
 1. The rest of the floppy cable can be routed out the back of the M4P.
-
 ![floppy_cable_back](/images/floppy_cable_back.jpg)
-
 1. (optional) connect your disable switch to the remapper board.
 1. Put your TRS-80 back together.
 
 ## Installation in a Model 4P (non-gate array)
 
 Sorry, I don't have one of these yet...
+
+These steps are similar to the M4P GA, except an additional mod is needed, similar to the M4 GA above.
 
 ## Other TRS-80 Models
 
