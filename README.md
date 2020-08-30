@@ -28,7 +28,8 @@ board (or the main motherboard) needs to be replaced by a socket.  Certain
 models require an additional minor motherboard modification (see below).
 
 My goal for this project was to enable the features above while
-requiring the fewest (and least invasive) modifications possible.
+requiring the fewest (and least invasive) modifications possible to these
+vintage computers.
 
 ## TRS-80 Model 4P booting directly from an external floppy emulator
 
