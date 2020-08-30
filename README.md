@@ -30,38 +30,30 @@ models require an additional minor motherboard modification (see below).
 My goal for this project was to enable the features above while
 requiring the fewest (and least invasive) modifications possible.
 
-## Model 4P GA booting directly from an external floppy emulator
+## TRS-80 Model 4P booting directly from an external floppy emulator
 
 ![Model 4P GA booting](/images/m4pga-boot.jpg)
 
 ## Contents
 
-**WARNING**: This project requires some soldering and assumes you are very comfortable working around
-electronics.  Lethal voltage levels are present inside these computers, so please be safe!
-I make no claim that the information herein is complete, correct, easy to follow, you won't
-damage your computer, etc.
-
-* [Design, Manufacturing, Programming](/Design.md)
+* [Board design, manufacturing, and programming](/Design.md)
 * [Board overview](/Board.md)
 * Prep for installation
-  * [Making a new M4P Floppy Cable](/M4P-FloppyCable.md)
+  * [Making the M4P Floppy Cable](/M4P-FloppyCable.md)
   * [Installing the socket](/Socket.md)
-  * [Installing an optional disable switch](/Disable.md)
+  * [Installing an (optional) disable switch](/Disable.md)
 * [Installation](/Installation.md)
 * [Usage](/Usage.md)
 
-## Background about this project:
+## Background
 
 * [VCF Thread on V3](http://www.vcfed.org/forum/showthread.php?75460-My-floppy-remapper-project-version-2)
 * [VCF Thread on V1](http://www.vcfed.org/forum/showthread.php?70726-Booting-from-an-external-floppy-on-a-model-III&p=606759#post606759)
 
-## TODO / stuff I'd like to fix in V3
+## TODO for V3
 
 1. LED brightness is still not exactly right (green is still a touch bright,
 blue is a touch too dim, reds are about right).
-1. I'd like to eventually make my own boot roms to allow for keyboard selection of the boot drive.
-This would completely eliminate any need for the disable switch (and be very convenient).
-
-## Theory of operation
-
-TBD
+1. Add code to TRS-80 boot roms to set drive mapping (eliminating the need
+for a disable switch).
+1. Write theory of operation section
