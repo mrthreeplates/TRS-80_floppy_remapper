@@ -415,9 +415,9 @@ This could be any of the 8 mappings.  Upon first programming the PIC, this
 default map number is 0.
 
 The current mapping as well as the default mapping is changed via an out instruction
-(most easily done in basic).  The formula to use is:
+(most easily done in basic).  The command to use is:
 
-out 244, 3 + map# * 4
+    out 244, 3 + map# * 4
 
 The change will take place immediately (as long as disable switch isn't shorted).  The
 drive motors will turn on for 2 seconds as a harmless side effect (see Theory of operation
@@ -428,9 +428,9 @@ When the TRS-80 is powered off, the current map will be forgotten.
 
 If you want to also make a map# default for power up, then add 128 as follows:
 
-out 244, 3 + map# * 4 + 128
+    out 244, 3 + map# * 4 + 128
 
-If you can actually see the remapper board, the current enable state, current map #,
+If you can actually see the remapper board, the current enable state, current map,
 and default map status will be visible on the LEDs.  This lets you confirm the out
 instruction is doing what you want (and is kinda fun).  This is most easily done
 on the Model 4 GA (and harder to do on the M4P and M3/M4 non GA).
@@ -462,6 +462,13 @@ The switch should behave as you expect, with one caveat.
 To avoid unexpected behaivor (i.e accidents), if any drive is currently
 active when the disable switch is toggled, the mapping will not be changed.
 As soon as the drive stops, the new mapping state will take effect.
+
+## TODO list / stuff I'd like to fix in V3
+
+1. LED brightness is still not exactly right (green is still a touch bright,
+blue is a touch too dim, reds are about right).
+1. I'd like to eventually make my own boot roms to allow for keyboard selection of the boot drive.
+This would completely eliminate any need for the disable switch (and be very convenient).
 
 ## Theory of operation
 
