@@ -46,7 +46,7 @@ damage your computer, etc.  If any of this worries you at all, this project isn'
 
 ## V3 Design and PCB files (how to make boards)
 
-* [design files](/design): (schematic and pin map)
+* [design files](/design): (schematic and pin map); reference datasheets: [PIC18F26Q10](http://ww1.microchip.com/downloads/en/DeviceDoc/PIC18F26-45-46Q10-Data-Sheet-40001996D.pdf), [74LS174](https://www.ti.com/lit/ds/symlink/sn74ls174.pdf)
 * [PCB files](/design/pcb_info): (gerbers, bill of material, centroid)
 
 Note: at this time, I don't have an easy way to order pre-assembled boards.  However, all the
