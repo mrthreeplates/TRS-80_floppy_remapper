@@ -40,10 +40,10 @@ vintage computers.
 * [Board design, manufacturing, and programming](/Design.md)
 * [Board overview](/Board.md)
 * Prep for installation
-  * [Making the M4P Floppy Cable](/M4P-FloppyCable.md)
+  * [Making the Model 4P Floppy Cable](/M4P-FloppyCable.md)
   * [Installing the socket](/Socket.md)
   * [Installing an (optional) disable switch](/Disable.md)
-* [Installation](/Installation.md)
+* [TRS-80 Model 3, 4, and 4P installation](/Installation.md)
 * [Usage](/Usage.md)
 
 ## Background
