@@ -131,21 +131,24 @@ In order to re-run the tests (to clear the error), you must re-program the PIC.
 ![leds-v3](/images/leds-v3.jpg)
 
 The LEDs are there to tell you that the board is alive, show you the current configuration,
-and for [Blikenlights](https://en.wikipedia.org/wiki/Blinkenlights).
+and for [Blinkenlights](https://en.wikipedia.org/wiki/Blinkenlights).
 
 It is unfortunate you can't see the LEDs when the computer is assembled.  Truthfully, the LEDs are optional and could be removed (along with the current limiting resistors) to save cost.
 However, what would be the fun in that?  I know they are there even if I can't see them.
 
 The Green "Enable" LED will be lit whenever the disable switch is not closed.
 
-The Red row (and bank) LEDs show you which mapping is currently selected.
+The Red row (and "Bank") LEDs show you which mapping is currently selected.
 For example, when the first row LED is lit (next to "0 1 2 3") and the right "Bank" LED is off,
 then the mapping of drives will be unchanged.
 
-Also, the row light will flash periodically to indicate that the PIC controller is alive.
+The row light will flash periodically to indicate that the PIC controller is alive.  The
+pattern of flashing tells you if the board is in "M4P mode" or not (see jumpers below).  When
+the "M4P mode" jumper is installed, the row light will do a quick double flash.  Otherwise,
+the row light flashes on/off regularly.
 
 Additionally, you can save a "Default" mapping which is always restored
-upon power on of the computer.  This can be any of the 8 pre-programmed
+upon power on of the computer.  This can be any one of the 8 pre-programmed
 drive maps.  Whenever the current mapping matches this saved mapping, the Blue LED
 next to "Default" will be lit.
 
@@ -155,30 +158,24 @@ There are two jumpers on the back of the board (on the same header used for prog
 
 <br/>![jumpers-v3](/images/jumpers-v3.jpg)
 
-The "Run mode" jumper must be installed before installing the floppy remapper board
+The "Run mode" jumper must be installed for normal operation
 (i.e. whenever you aren't trying to program it).
 
-The "M4P mode" jumper should be installed when installing the flopper remapper
-into a TRS-80 Model 4P computer **and** you want to add support for external
-floppy drives.  Otherwise, this jumper can be left off.
-
-The current mode ("M4P mode" v.s. non-M4P mode) will be indicated by the flashing pattern of the
-single row light which is illuminated.  When in M4P mode, the row light will do a quick "double" flash,
-otherwise it will flash slowly.
-
-The flashing of the row light also tells you that the MCU is alive and heathy.
+The "M4P mode" jumper should be installed when installing the remapper
+into a TRS-80 Model 4P computer.  This jumper changes the way the PIC drives
+some of the output signals (more info on this is below).
 
 ## Front headers
 
 ![front-header-v3](/images/front-header-v3.jpg)
 
 An optional disable switch (e.g. SPST) may be installed.  When these pins
-are shorted, floppy drive re-mapping will be disabled.
+are shorted, the floppy drive re-mapping will be effectively disabled.
 
 When in M4P mode, the ~DS2 and ~DS3 pins should be connected to a special
 floppy drive cable and routed to an external connector out of the back
 of the M4P computer.  This provides support for external floppy drives
-just like on the Model 3 and 4 computers.
+(just like on the Model 3 and 4 computers).
 
 For Model 4 gate array and Model 4P non-gate array computers, an extra
 motherboard modification is required.  This is what the third pin on the
@@ -186,7 +183,7 @@ output signal header is for (see installation instructions below).
 
 ## Floppy cable build instructions (Model 4P only)
 
-On the Model 4P, you'd need a custom floppy cable which adds an external interface for two floppy drives.  This also connects to the remapper board, providing the drive select lines for the external drives:
+On the Model 4P, you'd need to make a custom floppy cable which adds an external interface for two floppy drives.  This also connects to the remapper board, providing the drive select lines for the external drives:
 
 <br/>![floppy_cable2](/images/floppy_cable2.jpg)
 
@@ -200,22 +197,20 @@ https://www.ebay.com/itm/5Pack-34-Pin-Card-Edge-Female-IDC-Connector-for-2-54mm-
 
 Steps:
 
-1. Remove your existing floppy cable from the M4P.  This is useful for sizing purposes only.  You do not need to modify it.  Keep it for backup purposes!
-1. Carefully remove the female connector from the 24" extension cable.  You need to reuse this connector.  Trim off the damaged part of the ribbon cable.
+1. Remove your existing floppy cable from the M4P.  This is useful for sizing and reference purposes only.  You do not need to modify it.  Keep it as a backup!
+1. Carefully remove the female connector from the 24" extension cable.  You will need to reuse this connector.  Trim off the damaged part of the ribbon cable.
 1. (Using a vise) carefully install two female card edge connectors and the one female IDC connector (removed above) at approximately the same locations (separation) as your original floppy cable.  You'll now have a cable that looks like your original, except that the cable continues past where it normally connects to the M4P motherboard.  This part will go out the back of the model 4P.
-1. Look at your original floppy cable Female card edge connectors.  If you see that some connectors have been removed (most likely), you will have to remove the same connectors from the new cable.  Mine pulled out with pliers easily.  The missing pins allows the connector to determine which drive is 0 and which drive is 1.  Look carefully at the following image noting the missing pins:
-
+1. Look at your original floppy cable Female card edge connectors.  If you see that some pins have been removed, you will have to remove those same pins from your new cable.  The pins should pull out easily with pliers.  The missing pins determine which connector is drive 0 and which is drive 1.  Look carefully at the following image (as an example only) noting the missing pins:
 <br/>![floppy_card_edge](/images/floppy_card_edge.jpg)
+1. Using an X-acto knife, carefully separate out drive select 0 and 1 (pins 10 and 12) wires from the floppy cable just after the female IDC connector.  These wires should lead towards the male IDC connector.  It is okay if you cut wire 11 as it is a redundant ground.
+1. Connect a two wire ribbon cable to wires 10 and 12.
+1. Connect the other end of the two wire ribbon cable to a 2 pin dupont header.
 
-1. Using an X-acto knife, carefully separate out drive select 0 and 1 (pins 10 and 12) from the floppy cable just after the female IDC connector.  These lines should lead towards the male IDC connector.  It is okay if you just cut pin 11 as it is a redundant ground.
-1. Connect a two wire ribbon cable to pins 10 and 12.
-1. Connect the other end of the two pin ribbon cable to a 2 pin dupont header.
-
-The spliced in wire should like this (ignore the extra cuts on pins 6 and 14 I made, these aren't necessary):
+The spliced in wire should like this (please ignore the extra cuts on wires 6 and 14, these aren't necessary):
 
 <br/>![floppy_cable1](/images/floppy_cable1.jpg)
 
-## Installation of the socket for the remapper board (common on all models)
+## Installation of the socket for the remapper board
 
 Important notes before you get started:
 1. The remapper board replaces (emulates) a 74LS174 Hex D-Flip flop on the floppy
@@ -224,16 +219,16 @@ one 74LS174) on your model of computer.  As there are differences between board 
 even for the same model of computer, I cannot tell you which chip (i.e. Uxx) is the correct one.
 To make matters worse, there are errors in the Radio Shack schematics which incorrectly label some
 of these chips.  Also, these schematics may not account for board revisions.  However, I'll list what I know
-and offer some ways to confirm you have the right IC.  **This is just a long way of saying double
+and suggest a way to confirm you have the right IC.  **Please, double
 check you have the right IC before you start!**
 1. Depending upon which model of TRS-80 you have (and what options), there isn't much room
 to install the remapper board (considering adjacent components, vertical clearance, etc).
-In particular, the graphics boards on the Model 4/4P and serial board on the M4P, do
+In particular, the optional graphics board on a Model 4/4P and serial board on the M4P, do
 come very close to the remapper board.  I've tried to carefully design the PCB so that it works in all of the
 computers that I have.  However, it is possible
 that it won't work for you.  So the first issue you need to be concerned about is the fit
-and to ensure that nothing will rub, touch or potentially short out.  **Again, a long way of saying,
-double check the physical fit of the remapper board before you start (especially on the M4P)!**.
+and to ensure that nothing will rub, touch or potentially short out.  **Please,
+double check the fit of the remapper board before you start (especially on the M4P)!**.
 1. If there is any possibility of a short between the remapper board and something close by,
 use some insulation (like kapton tape), just to be safe.  Pay close attention to the M4P as it
 is very tight when assembled.
@@ -244,7 +239,7 @@ to revert this modification.
 
 For reference, here are the IC numbers from my computers (your computer may be different!):
 
-Computer | Revision | IC to socket | Other mods needed
+Computer | Revision | Socket | Additional mod needed
 ------------ | ------------- | ------------ | -----------
 TRS-80 M3 | unknown | U6 | None
 TRS-80 M4 non-GA | ? | U6? | None
@@ -253,33 +248,31 @@ TRS-80 M4P non-GA | ? | U32? | ?cut trace from U74, pin 12?
 TRS-80 M4P GA | unknown | U34 | None
 
 Steps:
-1. Locate the 74LS174 IC which handles the drive select lines.  The best way to be certain
-is to bring up a copy of the relevant schematic from your computer and check
-some pins with an ohmmeter.
-1. Here is an example from a M4P GA:
+1. Locate the 74LS174 IC which handles the drive select lines.  Look at your schematic and use an ohmmeter to confirm you have the right chip.
+1. Here is an example from a M4P GA (but please substitute the schematic from your computer model!):
 <br/>![m4p-ga-schem](/images/m4p-ga-schem.jpg)
 1. The yellow circle highlights some of the key the floppy signals (such as drive select, etc).
 This tells us we are in the right area.
-1. The green circle highlights the actual floppy disk controller chip, and is also a good indicator we
+1. The green circle highlights the floppy disk controller chip, and is also a good indicator we
 are in the right place.
-1. Finally, the red circle represents the 74LS174 which latches the floppy signals.  This is the IC we want
+1. The red circle represents the 74LS174 which latches the floppy signals.  This is the IC we want
 want to remove and replace with a socket.
-1. Note that if you look at the reference designator on my schematic (U54), it does not match my board.
+1. Note that if you look at the reference designator on my schematic (U54), it does not match my board!
 This kind of mistake is easy to spot since we are looking for a 74LS174.
 1. Confirm you have the right IC by checking the connections with adjacent chips.  For example, in the schematic
 above the blue circle shows that the DRVSEL line of the floppy support gate array (pin 15) should
 be connected directly to pin 9 of the 74LS174.  If you validate a few of these connections, you can
 be certain you have the right IC.
-Here is an image of my board with the correct IC circled in red:
+Here is an image of my board with the correct IC circled in red (again, for a M4P GA):
 <br/>![m4p-ga-ic](/images/m4p-ga-ic.jpg)
 1. Carefully desolder the IC.  I used a desoldering tool to minimize damage to the
 board.  Clipping the pins off of the 74LS174 is easier, but destorys the chip.  Be careful
 not to damage any of the traces.
 1. Solder in a quality replacement socket, preferably one with machine pins.
-1. If you want to double check that you haven't damaged anything, you can insert the
-74LS174 back in to confirm that your computer still works.
+1. Confirm you haven't damaged anything by putting the 74LS174 into the socket
+and verify that your computer and floppy drives still work.
 
-## Installation of an (optional) disable switch (common on all models)
+## Installation of an disable switch (optional)
 
 Notes:
 1. As the floppy maps are software selectable, having an
