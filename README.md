@@ -4,7 +4,7 @@
 
 ## Introduction
 
-This board dynamically remaps the floppy disk drives (e.g. 0 through 3) in vintage
+The TRS-80 floppy remapper dynamically remaps the floppy disk drives (e.g. 0 through 3) in vintage
 TRS-80 Model 3, 4, and 4P computers.
 
 The main reason for remapping the floppy drives on these computers
