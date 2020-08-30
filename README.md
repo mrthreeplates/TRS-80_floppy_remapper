@@ -33,7 +33,7 @@ requiring the fewest (and least invasive) modifications possible.
 **WARNING**: This project requires some soldering and assumes you are very comfortable working around
 electronics.  Lethal voltage levels are present inside these computers, so please be safe!
 I make no claim that the information below is complete, correct, easy to follow, you won't
-damage your computer, etc.  If any of this worries you at all, this project isn't for you.
+damage your computer, etc.
 
 ## Model 4P GA booting directly from an external floppy emulator
 
@@ -46,7 +46,8 @@ damage your computer, etc.  If any of this worries you at all, this project isn'
 
 ## V3 Design and PCB files (how to make boards)
 
-* [design files](/design): (schematic and pin map); reference datasheets: [PIC18F26Q10](http://ww1.microchip.com/downloads/en/DeviceDoc/PIC18F26-45-46Q10-Data-Sheet-40001996D.pdf), [74LS174](https://www.ti.com/lit/ds/symlink/sn74ls174.pdf)
+* [Design files](/design): (schematic and pin map)
+* Datasheets: [PIC18F26Q10](http://ww1.microchip.com/downloads/en/DeviceDoc/PIC18F26-45-46Q10-Data-Sheet-40001996D.pdf), [74LS174](https://www.ti.com/lit/ds/symlink/sn74ls174.pdf)
 * [PCB files](/design/pcb_info): (gerbers, bill of material, centroid)
 
 Note: at this time, I don't have an easy way to order pre-assembled boards.  However, all the
