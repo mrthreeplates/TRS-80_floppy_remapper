@@ -15,7 +15,7 @@ to take apart the computer, swap cables or replace your internal vintage floppy 
 
 Additionally, this board adds support for two external floppy drives on Model 4P
 computers (which previously only supported two internal drives).  Inspiration for
-this feature came from a [January 1986 80 Micro article](https://colorcomputerarchive.com/repo/Documents/Magazines/80%20Micro/1986/80%20Micro%20-%208601%20-%20January%201986.pdf), while significantly reducing the number of board modifications needed.
+this feature came from a [January 1986 80 Micro article](https://colorcomputerarchive.com/repo/Documents/Magazines/80%20Micro/1986/80%20Micro%20-%208601%20-%20January%201986.pdf), while significantly reducing the modifications needed.
 
 Remapping of the drives is selectable via software using a simple "out" command in basic,
 enabling one of eight pre-programmed floppy disk maps.  You can also save the default power
@@ -31,9 +31,9 @@ My goal for this project was to enable the features above while
 requiring the fewest (and least invasive) modifications possible.
 
 **WARNING**: This project requires some soldering and assumes you are very comfortable working around
-electronics.  Deadly high voltage is present inside these computers, so please be safe!  I make no claim that these
-instructions are complete, correct, easy to follow, you won't damage your computer, etc.
-If any of this worries you at all, this project isn't for you.
+electronics.  Lethal voltage levels are present inside these computers, so please be safe!
+I make no claim that the information below is complete, correct, easy to follow, you won't
+damage your computer, etc.  If any of this worries you at all, this project isn't for you.
 
 ## Model 4P GA booting directly from an external floppy emulator
 
@@ -41,7 +41,7 @@ If any of this worries you at all, this project isn't for you.
 
 ### More information and background about this project:
 
-* [VCF Thread on V2 and V3](http://www.vcfed.org/forum/showthread.php?75460-My-floppy-remapper-project-version-2)
+* [VCF Thread on V3](http://www.vcfed.org/forum/showthread.php?75460-My-floppy-remapper-project-version-2)
 * [VCF Thread on V1](http://www.vcfed.org/forum/showthread.php?70726-Booting-from-an-external-floppy-on-a-model-III&p=606759#post606759)
 
 ## V3 Design and PCB files (how to make boards)
@@ -53,19 +53,22 @@ Note: at this time, I don't have an easy way to order pre-assembled boards.  How
 files needed to have them made are listed above.  FWIW: I've had good results using PCBWay for
 all of my prototypes.
 
-If you are looking to build the simpler version of my floppy switch (not programmable
-and without M4P / M4 GA support), you can read about it here:
+If you are looking to build a simpler version of a floppy switch (not programmable
+and without M4P / M4 GA support), you can read about my earlier version here:
 * [V1 build info](http://www.vcfed.org/forum/showthread.php?70726-Booting-from-an-external-floppy-on-a-model-III&p=603230#post603230)
 
 ## V3 Programming information
 
-You can build a programmable image from source, or use the pre-built image I've supplied.
+The following assumes you are familiar with using [MPLAB X IDE](https://www.microchip.com/mplab/mplab-x-ide).
+If you are not, you might want to check out some tutorials on YouTube.
 
-See: [Programming files](/program) (MPLAB project source code and compiled HEX file)
+You can make a programmable image from source, or use the pre-built image I've supplied.
+
+* [Programming files](/program) (MPLAB project source code and compiled HEX file)
 
 How to build from source:
 
-1. Create a new project using [MPLAB X IDE](https://www.microchip.com/mplab/mplab-x-ide) based on a PIC18F26Q10
+1. Create a new project using MPLAB X IDE based on a PIC18F26Q10.
 1. Under your projects tab, "Important Files", right click to "Add item to important Files"
    Select "MyConfig.mc3" from this repo and add it.
    For help see [Adding an Existing Configuration File to a Project](https://microchipdeveloper.com/mcc:mcc-config).
@@ -100,7 +103,7 @@ Connect the programmer and program the board:
 
 <br/>![prog-header-v3](/images/prog-header-v3.jpg)
 
-## Board self tests
+## Self tests
 
 After programming (unless held in reset) the PIC will automatically boot and run a
 one-time series of self tests.  This is mostly to test the software and
@@ -119,41 +122,32 @@ board may behave unpredictably due to floating inputs (although there is no harm
 
 At the end of the tests, if an error is found, all of the LEDs will flash in an
 alternating pattern.  This means there is either a bug in the code or a problem with
-the board.  Either way, this needs to be fixed. If you try to install the board
+the board.  Either way, this error needs to be fixed. If you try to install the board
 into a computer, it will refuse to work (as the error status is saved into EEPROM).
-In order to re-run the tests, you must re-program the PIC.
+In order to re-run the tests (to clear the error), you must re-program the PIC.
 
 ## Front LEDs
 
 ![leds-v3](/images/leds-v3.jpg)
 
-The LEDs are there to tell you that the board is alive, the current configuration,
-and I wanted blikenlights.
+The LEDs are there to tell you that the board is alive, show you the current configuration,
+and for [Blikenlights](https://en.wikipedia.org/wiki/Blinkenlights).
 
-Otherwise, the LEDs are optional and could be removed.  Also, you obviously can't
-see them when the computer is assembled.
+It is unfortunate you can't see the LEDs when the computer is assembled.  Truthfully, the LEDs are optional and could be removed (along with the current limiting resistors) to save cost.
+However, what would be the fun in that?  I know they are there even if I can't see them.
 
-The Green enable LED will be lit whenever the disable switch is not closed.
+The Green "Enable" LED will be lit whenever the disable switch is not closed.
 
-The Red row (and bank) lights show you which mapping is currently selected.
-For example, when the first row is lit (next to "0 1 2 3") and the bank is off,
-then the mapping of drives will be unchanged.  There are 8 pre-programmed drive mappings.
+The Red row (and bank) LEDs show you which mapping is currently selected.
+For example, when the first row LED is lit (next to "0 1 2 3") and the right "Bank" LED is off,
+then the mapping of drives will be unchanged.
 
-Additionally, you can save a "default" mapping which is always restored
+Also, the row light will flash periodically to indicate that the PIC controller is alive.
+
+Additionally, you can save a "Default" mapping which is always restored
 upon power on of the computer.  This can be any of the 8 pre-programmed
-drive maps.
-
-Note that the default mapping is not affected by a computer
-reset.  You can take advantage of this by temporarily changing the drive
-mapping (and reseting the computer) to force it to boot from another drive.
-Unless the mapping is saved, then this temporary mapping will be forgotten
-once the computer is powered off.
-
-Whenever the current mapping matches this saved mapping, the Blue light
+drive maps.  Whenever the current mapping matches this saved mapping, the Blue LED
 next to "Default" will be lit.
-
-Finally, the row light will flash periodically to indicate that the PIC
-controller is actually alive.
 
 ## Back jumpers
 
