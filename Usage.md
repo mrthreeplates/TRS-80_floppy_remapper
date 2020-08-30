@@ -2,8 +2,6 @@
 
 ## Changing the drive mapping
 
-Wow, you got this far, congratulations!  Here comes the fun stuff.
-
 There are 8 pre-programmed (fixed) floppy drive mappings numbered 0 through 7:
 
 Map number | Drive 0 | Drive 1 | Drive 2 | Drive 3 | Comment
