@@ -13,7 +13,7 @@ useful when paired with a modern external floppy disk emulator such as
 the [USB HxC emulator](http://hxc2001.free.fr/floppy_drive_emulator/).  This avoids the need
 to take apart the computer, swap cables or replace your internal vintage floppy drives.
 
-When combined with a [M3SE](http://bartlettlabs.com/M3SE/) or [FreHD](http://www.vecoven.com/trs80/trs80.html), the remapper can be used to conveniently
+When booting from a [M3SE](http://bartlettlabs.com/M3SE/) or [FreHD](http://www.vecoven.com/trs80/trs80.html), the remapper can be used to conveniently
 remap the two internal drives (e.g. to access an emulator, or other external drive).
 
 As a bonus, this board adds support for two external floppy drives on Model 4P
