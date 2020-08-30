@@ -253,9 +253,9 @@ For reference, here are the IC numbers from my computers (your computer may be d
 Computer | Revision | IC to socket | Other mods needed
 ------------ | ------------- | ------------ | -----------
 TRS-80 M3 | unknown | U6 | None
-TRS-80 M4 non-GA | ? | ? | None
+TRS-80 M4 non-GA | ? | U6? | None
 TRS-80 M4 GA | unknown | U79 | cut trace to U95, pin 1
-TRS-80 M4P non-GA | ? | ? | tbd
+TRS-80 M4P non-GA | ? | U32? | ?cut trace from U74, pin 12?
 TRS-80 M4P GA | unknown | U34 | None
 
 Steps:
@@ -367,9 +367,15 @@ The other pin on the output header is not used on the M4P GA:
 
 ## Installation in a Model 4P (non-gate array)
 
-Sorry, I don't have one of these yet...
+Sorry, I don't have one of these yet, so this is all TBD...
 
-These steps are similar to the M4P GA, except an additional mod is needed, similar to the M4 GA above.
+The install steps are similar to the M4P GA, except an additional mod is needed, similar to the M4 GA above.
+
+The HLT/RDY Jumper needs to go to U13 pin 23/32 (or possibly U74/U75).  I need to examine a board to determine which is best.
+
+Note: due to the chip spacing, I suspect the remapper board (if at U32), might have to fit
+under the graphics option board (if installed).  Hopefully there is enough space.
+Kapton tape may be needed.
 
 ## Other TRS-80 Models
 
