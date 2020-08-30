@@ -3,7 +3,7 @@
 ## Installation in a Model 3 or Model 4 (non-gate array)
 
 1. Disassemble your TRS-80 so that you have access to the floppy disk controller board.
-1. Install a socket for the remapper board (refer to instructions above).  See U6 in this image below:
+1. Install a socket for the remapper board.  See U6 in this image below:
 <br/>![Model 3](/images/install-m3-v3.jpg)
 1. Connect the "Run mode" jumper on the back of the remapper board.
 1. Plug in the remapper board into the socket.
@@ -14,7 +14,7 @@
 ## Installation in a Model 4 Gate array
 
 1. Disassemble your TRS-80 so that you have access to the motherboard.
-1. Install a socket for the remapper board (refer to instructions above).
+1. Install a socket for the remapper board.
 1. Connect the "Run mode" jumper on the back of the remapper board.
 1. Plug in the remapper board into the socket.
 <br/>![Model 4ga](/images/install-m4ga-v3.jpg)
@@ -46,7 +46,7 @@ isolated from the motherboard).
 ## Installation in a Model 4P Gate array
 
 1. Disassemble your TRS-80 so that you have access to the motherboard.
-1. Install a socket for the remapper board (refer to instructions above).
+1. Install a socket for the remapper board.
 1. Connect both "Run mode" and "M4P mode" jumpers on the back of the remapper board.
 1. Plug in the remapper board into the socket.
 1. Install the custom floppy cable into the M4P, replacing your original cable.
