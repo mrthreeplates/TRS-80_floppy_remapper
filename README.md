@@ -18,17 +18,17 @@ remap the two internal drives (e.g. to access an emulator, or other external dri
 
 Eight different floppy drive mappings are supported, allowing booting from
 any drive (0, 1, 2, or 3) with a choice of two maps for each boot drive.  This
-can be as simple as swapping drives 0 and 1 (useful if they are different types).
+map be as simple as swapping drives 0 and 1 (useful if they are different types).
 
 As a bonus, this board adds support for two external floppy drives on Model 4P
 computers (which previously only supported two internal drives).  Inspiration for
 this feature came from a [January 1986 80 Micro article](https://colorcomputerarchive.com/repo/Documents/Magazines/80%20Micro/1986/80%20Micro%20-%208601%20-%20January%201986.pdf), while significantly reducing the modifications needed.
 
 Remapping of the drives is controlled via software using the "out" command in Basic.
-You can set the current map (which will survive a reset), or set a default
+You can set the current map (which will survive a reset), or set the default
 map to be used upon power on.
 
-An optional disable switch can be installed.
+An optional disable switch can be installed if desired.
 
 In order to install this board, one chip on the floppy disk controller
 board (or the main motherboard) needs to be replaced by a socket.  Certain
