@@ -4,7 +4,7 @@
 
 ## Introduction
 
-The TRS-80 floppy remapper dynamically remaps the floppy disk drives (e.g. 0 through 3) in vintage
+The TRS-80 floppy remapper is a simple board which dynamically remaps the floppy disk drives in vintage
 TRS-80 Model 3, 4, and 4P computers.
 
 The main reason for remapping the floppy drives on these computers
@@ -16,19 +16,23 @@ to take apart the computer, swap cables or replace your internal vintage floppy 
 When booting from a [M3SE](http://bartlettlabs.com/M3SE/) or [FreHD](http://www.vecoven.com/trs80/trs80.html), the remapper can be used to conveniently
 remap the two internal drives (e.g. to access an emulator, or other external drive).
 
+Eight different floppy drive mappings are supported, allowing booting from
+any drive (0, 1, 2, or 3) with a choice of two maps for each boot drive.  This
+can be as simple as swapping drives 0 and 1 (useful if they are different types).
+
 As a bonus, this board adds support for two external floppy drives on Model 4P
 computers (which previously only supported two internal drives).  Inspiration for
 this feature came from a [January 1986 80 Micro article](https://colorcomputerarchive.com/repo/Documents/Magazines/80%20Micro/1986/80%20Micro%20-%208601%20-%20January%201986.pdf), while significantly reducing the modifications needed.
 
-Remapping of the drives is selectable via software using a simple "out" command in basic,
-enabling one of eight pre-programmed floppy disk maps.  You can also save the default power
-up mapping.
+Remapping of the drives is controlled via software using the "out" command in Basic.
+You can set the current map (which will survive a reset), or set a default
+map to be used upon power on.
 
 An optional disable switch can be installed.
 
 In order to install this board, one chip on the floppy disk controller
 board (or the main motherboard) needs to be replaced by a socket.  Certain
-models require an additional minor motherboard modification (see below).
+models require an additional minor modification (see installation details).
 
 My goal for this project was to enable the features above while
 requiring the fewest (and least invasive) modifications possible to these
@@ -58,6 +62,6 @@ vintage computers.
 
 1. LED brightness is still not exactly right (green is still a touch bright,
 blue is a touch too dim, reds are about right).
-1. Add code to TRS-80 boot roms to set drive mapping (eliminating the need
+1. Modify TRS-80 boot roms to control drive mapping via the keyboard (eliminating the need
 for a disable switch).
-1. Write theory of operation section
+1. Write theory of operation
