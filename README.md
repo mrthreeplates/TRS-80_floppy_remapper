@@ -14,11 +14,11 @@ the [USB HxC emulator](http://hxc2001.free.fr/floppy_drive_emulator/).  This avo
 to take apart the computer, swap cables or replace your internal vintage floppy drives.
 
 When booting from a [M3SE](http://bartlettlabs.com/M3SE/) or [FreHD](http://www.vecoven.com/trs80/trs80.html), the remapper can be used to conveniently
-remap the two internal drives (e.g. to access an emulator, or other external drive).
+remap the two internal drives (as the remaining drives are Hard Disks).
 
 Eight different floppy drive mappings are supported, allowing booting from
-any drive (0, 1, 2, or 3) with a choice of two maps for each boot drive.  This
-map be as simple as swapping drives 0 and 1 (useful if they are different types).
+any drive (0-3) with a choice of two maps for each boot drive.
+This map can be as simple as swapping drives 0 and 1 (useful perhaps if they are different types).
 
 As a bonus, this board adds support for two external floppy drives on Model 4P
 computers (which previously only supported two internal drives).  Inspiration for
