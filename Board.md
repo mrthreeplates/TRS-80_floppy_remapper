@@ -52,5 +52,5 @@ of the M4P computer.  This provides support for external floppy drives
 (just like on the Model 3 and 4 computers).
 
 For Model 4 gate array and Model 4P non-gate array computers, an extra
-motherboard modification is required.  This is what the third pin on the
-output signal header is for (see installation instructions below).
+motherboard modification is required.  The third pin on the
+output signal header provides the extra signal needed for these computers.
