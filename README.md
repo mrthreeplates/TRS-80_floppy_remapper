@@ -42,7 +42,7 @@ vintage computers.
 
 ![Model 4P GA booting](/images/m4pga-boot.jpg)
 
-## Contents
+## More info
 
 * [Board design, manufacturing, and programming](/Design.md)
 * [Board overview](/Board.md)
@@ -53,15 +53,15 @@ vintage computers.
 * [TRS-80 Model 3, 4, and 4P installation](/Installation.md)
 * [Usage](/Usage.md)
 
-## Background
+## Discussion
 
 * [VCF Thread on V3](http://www.vcfed.org/forum/showthread.php?75460-My-floppy-remapper-project-version-2)
 * [VCF Thread on V1](http://www.vcfed.org/forum/showthread.php?70726-Booting-from-an-external-floppy-on-a-model-III&p=606759#post606759)
 
-## TODO for V3
+## TODO
 
-1. LED brightness is still not exactly right (green is still a touch bright,
-blue is a touch too dim, reds are about right).
+1. LED brightness is not exactly right (green is bit too bright,
+blue is too dim, reds are about right).
 1. Modify TRS-80 boot roms to control drive mapping via the keyboard (eliminating the need
 for a disable switch).
 1. Write theory of operation
