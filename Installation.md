@@ -67,7 +67,9 @@ under the graphics option board (if present).  I am really curious to find out i
 work (or what adjustment might be needed).  At the very least, Kapton tape may be needed
 to avoid a short.
 
-Please follow the same steps as the 4P Gate array above, except that the extra pin on the remapper board is needed (see below).
+Please follow the same steps as the 4P Gate array (see above).
+
+Additionally, you will need to hook up the extra output pin (labeled HLT/RDY) on the remapper board:
 
 1. Open up a schematic of the M4P Non-Gate array:
 <br/>![Model 4p non-ga schematic](/images/m4p-nonga-schem.jpg)
@@ -85,6 +87,7 @@ I can think of and (IMO) is definitely better than cutting a trace on the mother
 1. Create a single wire jumper, with a grabber on one end and dupont header on the other.  See the M4 GA installation instructions above as an example.
 1. Connect the grabber end to either pin 23 or pin 32 (pick one) of the floppy disk controller (U13).
 1. Connect the other end of the jumper wire to the 3rd pin of the remapper board labelled (HLT/RDY).
+1. Note: This wire allows the remapper board to drive HLT/RDY based on all four drive select lines instead of the 2 supported in the original design.
 
 ## Other TRS-80 Models
 
