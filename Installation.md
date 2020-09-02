@@ -60,15 +60,31 @@ The other pin on the output header is not used on the M4P GA:
 
 ## Installation in a Model 4P (non-gate array)
 
-WIP ... Sorry, I don't have one of these yet, so this is all TBD...
+**Unverified! I don't have a TRS-80 M4P non-gate array, so the following is just based on the schematic.**
 
-The install steps are similar to the M4P GA, except an additional mod is needed, similar to the M4 GA above.
+Note: due to the chip spacing, I suspect the remapper board (if at U32), might end up being
+under the graphics option board (if present).  I am really curious to find out if this will
+work (or what adjustment might be needed).  At the very least, Kapton tape may be needed
+to avoid a short.
 
-The HLT/RDY Jumper needs to go to U13 pin 23/32 (or possibly U74/U75).  I need to examine a board to determine which is best.
+Please follow the same steps as the 4P Gate array above, except that the extra pin on the remapper board is needed (see below).
 
-Note: due to the chip spacing, I suspect the remapper board (if at U32), might have to fit
-under the graphics option board (if one is present).  Hopefully there is enough space.
-Kapton tape may be needed...
+1. Open up a schematic of the M4P Non-Gate array:
+<br/>![Model 4p non-ga schematic](/images/m4p-nonga-schem.jpg)
+1. **Please confirm your board matches this schematic, or find the equivalent chips and pins.**
+1. In the diagram above, U32 (red circle) should be the 74LS174 which needs to be socketed.  The Green circle
+is a NOR gate which combines drive select 0 and 1, this is fed into an inverter (yellow circle) and
+finally drives the HLT/RDY signals (blue circle) on floppy disk controller IC.
+1. I recommend cutting pin 12 of U74 (yellow circle) and slightly bending the pin up so
+that it no longer makes contact with the motherboard.  This will interrupt
+the signal to the floppy controller.
+1. WARNING: if you want to revert this modification, you can carefully bend the pin
+back down to resolder it to the motherboard.  In the worst case,
+you can simply replace the IC.  This is the least invasive modification that
+I can think of and (IMO) is definitely better than cutting a trace on the motherboard.
+1. Create a single wire jumper, with a grabber on one end and dupont header on the other.  See the M4 GA installation instructions above as an example.
+1. Connect the grabber end to either pin 23 or pin 32 (pick one) of the floppy disk controller (U13).
+1. Connect the other end of the jumper wire to the 3rd pin of the remapper board labelled (HLT/RDY).
 
 ## Other TRS-80 Models
 
