@@ -38,9 +38,11 @@ My goal for this project was to enable the features above while
 requiring the fewest (and least invasive) modifications possible to these
 vintage computers.
 
-## TRS-80 Model 4P booting directly from an external floppy emulator
-
+## Examples
+#### TRS-80 Model 4P booting directly from an external floppy emulator
 ![Model 4P GA booting](/images/m4pga-boot.jpg)
+#### TRS-80 Model 4 (gate array) install
+![Model 4P GA booting](/images/install-m4ga-1.jpg)
 
 ## More info
 
