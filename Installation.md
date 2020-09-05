@@ -33,9 +33,9 @@ it could be done anywhere between U76 and U95.
 1. WARNING: If you ever want to reverse
 this modification, you'll have to re-bridge this cut!  So you might
 want to think about your options here.  Another solution would be to socket U95
-and bend up pin 1.  Or, you could carefully cut pin 1, and bend it up slighty, and solder a
+and bend up pin 1 (as very cleanly done by pski [here](http://www.vcfed.org/forum/showthread.php?75460-My-floppy-remapper-project-version-2&p=635048#post635048)).  Or, you could carefully cut pin 1, bend it up slighty, and solder a
 wire to it.  If I had to do this over again, I like these last two options
-better than cutting a trace.  Hindsight is 20/20.
+much better than cutting a trace.  Hindsight is 20/20.
 1. Regardless of the method you use, connect one end of the wire to pin 1, U95 (which should be
 isolated from the motherboard).
 1. Connect the other end of the wire to the output signal pin on the remapper board labeled EXTSEL.
