@@ -67,3 +67,5 @@ blue is too dim, reds are about right).
 1. Modify TRS-80 boot roms to control drive mapping via the keyboard (eliminating the need
 for a disable switch).
 1. Write theory of operation
+1. Possibly reduce header (U2) height so it fits better underneath the graphics board on a M4P non-gate array.  I need to be careful so that this doesn't create opportunities for shorting underneath the remapper board.
+1. Add support for separately controlling MOTORON signals for the internal / external floppy busses. Thanks to Pete (pski) for this suggestion!
