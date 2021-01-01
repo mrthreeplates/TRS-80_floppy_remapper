@@ -1,6 +1,6 @@
 # TRS-80_floppy_remapper
 
-## V3 Design and PCB files (how to make boards)
+## V3 Design and PCB files
 
 * [Design files](/design): (schematic and pin map)
 * Datasheets: [PIC18F26Q10](http://ww1.microchip.com/downloads/en/DeviceDoc/PIC18F26-45-46Q10-Data-Sheet-40001996D.pdf), [74LS174](https://www.ti.com/lit/ds/symlink/sn74ls174.pdf)

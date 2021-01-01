@@ -3,7 +3,7 @@
 ## Installation in a Model 3 or Model 4 (non-gate array)
 
 1. Disassemble your TRS-80 so that you have access to the floppy disk controller board.
-1. Install a socket for the remapper board (refer to instructions above).  See U6 in this image below:
+1. Install a socket for the remapper board.  See U6 in this image below:
 <br/>![Model 3](/images/install-m3-v3.jpg)
 1. Connect the "Run mode" jumper on the back of the remapper board.
 1. Plug in the remapper board into the socket.
@@ -14,7 +14,7 @@
 ## Installation in a Model 4 Gate array
 
 1. Disassemble your TRS-80 so that you have access to the motherboard.
-1. Install a socket for the remapper board (refer to instructions above).
+1. Install a socket for the remapper board.
 1. Connect the "Run mode" jumper on the back of the remapper board.
 1. Plug in the remapper board into the socket.
 <br/>![Model 4ga](/images/install-m4ga-v3.jpg)
@@ -33,9 +33,9 @@ it could be done anywhere between U76 and U95.
 1. WARNING: If you ever want to reverse
 this modification, you'll have to re-bridge this cut!  So you might
 want to think about your options here.  Another solution would be to socket U95
-and bend up pin 1.  Or, you could carefully cut pin 1, and bend it up slighty, and solder a
+and bend up pin 1 (as very cleanly done by pski [here](http://www.vcfed.org/forum/showthread.php?75460-My-floppy-remapper-project-version-2&p=635048#post635048)).  Or, you could carefully cut pin 1, bend it up slighty, and solder a
 wire to it.  If I had to do this over again, I like these last two options
-better than cutting a trace.  Hindsight is 20/20.
+much better than cutting a trace.  Hindsight is 20/20.
 1. Regardless of the method you use, connect one end of the wire to pin 1, U95 (which should be
 isolated from the motherboard).
 1. Connect the other end of the wire to the output signal pin on the remapper board labeled EXTSEL.
@@ -46,7 +46,7 @@ isolated from the motherboard).
 ## Installation in a Model 4P Gate array
 
 1. Disassemble your TRS-80 so that you have access to the motherboard.
-1. Install a socket for the remapper board (refer to instructions above).
+1. Install a socket for the remapper board.
 1. Connect both "Run mode" and "M4P mode" jumpers on the back of the remapper board.
 1. Plug in the remapper board into the socket.
 1. Install the custom floppy cable into the M4P, replacing your original cable.
@@ -60,15 +60,34 @@ The other pin on the output header is not used on the M4P GA:
 
 ## Installation in a Model 4P (non-gate array)
 
-WIP ... Sorry, I don't have one of these yet, so this is all TBD...
+**Unverified! I don't have a TRS-80 M4P non-gate array, so the following is just based on the schematic.**
 
-The install steps are similar to the M4P GA, except an additional mod is needed, similar to the M4 GA above.
+Note: due to the chip spacing, I suspect the remapper board (if at U32), might end up being
+under the graphics option board (if present).  I am really curious to find out if this will
+work (or what adjustment might be needed).  At the very least, Kapton tape may be needed
+to avoid a short.
 
-The HLT/RDY Jumper needs to go to U13 pin 23/32 (or possibly U74/U75).  I need to examine a board to determine which is best.
+Please follow the same steps as the 4P Gate array (see above).
 
-Note: due to the chip spacing, I suspect the remapper board (if at U32), might have to fit
-under the graphics option board (if one is present).  Hopefully there is enough space.
-Kapton tape may be needed...
+Additionally, you will need to hook up the extra output pin (labeled HLT/RDY) on the remapper board:
+
+1. Open up a schematic of the M4P Non-Gate array:
+<br/>![Model 4p non-ga schematic](/images/m4p-nonga-schem.jpg)
+1. **Please confirm your board matches this schematic, or find the equivalent chips and pins.**
+1. In the diagram above, U32 (red circle) should be the 74LS174 which needs to be socketed.  The Green circle
+is a NOR gate which combines drive select 0 and 1, this is fed into an inverter (yellow circle) and
+finally drives the HLT/RDY signals (blue circle) on floppy disk controller IC.
+1. I recommend cutting pin 12 of U74 (yellow circle) and slightly bending the pin up so
+that it no longer makes contact with the motherboard.  This will interrupt
+the signal to the floppy controller.
+1. WARNING: if you want to revert this modification, you can carefully bend the pin
+back down to resolder it to the motherboard.  In the worst case,
+you can simply replace the IC.  This is the least invasive modification that
+I can think of and (IMO) is definitely better than cutting a trace on the motherboard.
+1. Create a single wire jumper, with a grabber on one end and dupont header on the other.  See the M4 GA installation instructions above as an example.
+1. Connect the grabber end to either pin 23 or pin 32 (pick one) of the floppy disk controller (U13).
+1. Connect the other end of the jumper wire to the 3rd pin of the remapper board labelled (HLT/RDY).
+1. Note: This wire allows the remapper board to drive HLT/RDY based on all four drive select lines instead of the 2 supported in the original design.
 
 ## Other TRS-80 Models
 
