@@ -74,8 +74,6 @@ const uint16_t unit_test_address = 4;
 #define NUM_MAPS    (1<<3)          // 3 bits used for the map, or 8 total
 #define LAST_MAP    (NUM_MAPS-1)
 #define MAP_MASK    (LAST_MAP)
-#define NUM_ROWS    (NUM_MAPS/2)
-#define ROW_MASK    (NUM_ROWS-1)
 
 #define NUM_DRIVES  4
 
@@ -84,12 +82,10 @@ volatile uint8_t enabled_map;
 volatile uint8_t current_map;
 
 const uint8_t mapping[NUM_MAPS][NUM_DRIVES] = {
-    // first column
     {0, 1, 2, 3},           // index 0 (NO_MAP)
     {1, 0, 2, 3},           // index 1
     {2, 0, 1, 3},           // index 2
     {3, 0, 1, 2},           // index 3
-    // second column
     {0, 2, 1, 3},           // index 4
     {1, 2, 0, 3},           // index 5
     {2, 3, 0, 1},           // index 6
@@ -122,14 +118,14 @@ const uint8_t mapping[NUM_MAPS][NUM_DRIVES] = {
 // the pin directly via PORTBbits.RB7, so use CLC7out instead.
 #define EXTBUS      CLC7_OutputStatusGet()
 
-#define LED_BANK    LATA0
-#define LED_ROW1    LATA1
-#define LED_ROW2    LATA2
-#define LED_ROW3    LATA3
-#define LED_ROW4    LATA4
-#define LED_DEFAULT LATA5
+#define LED_MAP_B2  LATA0
+#define LED_MAP_B1  LATA1
+#define LED_MAP_B0  LATA2
+#define LED_DEFAULT LATA3
+#define LED_ENABLED LATA4
+#define NOT_MOTORON_D1 LATA5
 #define NOT_CLR     LATA6
-#define LED_ENABLED LATA7
+#define NOT_MOTORON_D0 LATA7
 
 // RB6 is normally an output, but a debugger forces it to be an input
 // So we can use this as a test.  Is there a better way?
@@ -203,21 +199,24 @@ void set_current_map(uint8_t map) {
     current_map = map;
 }
 
+#define WAIT    __delay_us(1)   // brief wait
+#define PAUSE   __delay_ms(250) // longer wait
+#define BIT(x) (1 << (x))
+
 // Store blink pattern in reverse, terminated by a leading 1.
 volatile uint16_t blink_pattern = 0b100001111;    // slow on/off toggle.
 volatile uint16_t blink_val = 1;
 
-void blink_row_leds(uint8_t row, bool reset) {    
+void blink_map_leds(uint8_t map, bool reset) {    
     if (reset || blink_val <= 1) {
         blink_val = blink_pattern;
     }
     bool set = blink_val & 1;
     blink_val >>= 1;
  
-    LED_ROW1 = ((row == 0) && set);
-    LED_ROW2 = ((row == 1) && set);
-    LED_ROW3 = ((row == 2) && set);
-    LED_ROW4 = ((row == 3) && set);
+    LED_MAP_B0 = (((map & BIT(0)) > 0) && set);
+    LED_MAP_B1 = (((map & BIT(1)) > 0) && set);
+    LED_MAP_B2 = (((map & BIT(2)) > 0) && set);
 }
 
 void set_map_leds(void) {
@@ -229,18 +228,13 @@ void set_map_leds(void) {
 
     LED_DEFAULT = (map == default_map);
     LED_ENABLED = enabled;
-    LED_BANK = (map >= NUM_ROWS);
 
-    blink_row_leds(map & ROW_MASK, true);
+    blink_map_leds(map, true);
 }
 
 void row_timer(void) {
-    blink_row_leds(current_map & ROW_MASK, false);
+    blink_map_leds(current_map, false);
 }
-
-#define WAIT    __delay_us(1)   // brief wait
-#define PAUSE   __delay_ms(250) // longer wait
-#define BIT(x) (1 << (x))
 
 // Clear CLC1-6 via external pin
 void external_clr(void) {
@@ -260,6 +254,9 @@ void internal_clr(void) {
     CLC8POL = BIT(7);
     WAIT;
     CLC8POL = 0x0;
+
+    // Clear MotorOn
+    NOT_MOTORON_D1 = NOT_MOTORON_D0 = 1; 
 }
 
 // latch CLC1-6 flip flops
@@ -303,6 +300,31 @@ void ISR(void) {
     if (m4p)
         clc ^= (CLC_DS2|CLC_DS3);
 
+// define one of the following to determine MotorOn pin behavior
+#define MOTORON_D01
+//#define MOTORON_D23
+//#define MOTORON_IE
+
+    // MotorOn should follow each drive select
+#ifdef MOTORON_D01
+    // Generate MotorOn for Internal Drives 0 or 1
+#define DSMAP(ds) (ds)
+    if (clc & CLC_DS0) NOT_MOTORON_D0 = 0;
+    if (clc & CLC_DS1) NOT_MOTORON_D1 = 0;
+#elif MOTORON_D23
+    // Generate MotorON for External Drives 2 or 3
+#define DSMAP(ds) ((ds) ^ 2)
+    if (clc & CLC_DS2) NOT_MOTORON_D0 = 0;
+    if (clc & CLC_DS3) NOT_MOTORON_D1 = 0;
+#elif MOTORON_IE
+    // Generate MotorON for Internal or External drive sets
+#define DSMAP(ds) ((ds) >> 1)
+    if (clc & (CLC_DS0|CLC_DS1)) NOT_MOTORON_D0 = 0;
+    if (clc & (CLC_DS2|CLC_DS3)) NOT_MOTORON_D1 = 0;
+#else
+#error "pick one!"
+#endif
+    
     // If a single drive is active, don't do anything!
     // We don't want the disable switch to change the map while in use.
     switch (clc & (CLC_DS0|CLC_DS1|CLC_DS2|CLC_DS3)) {
@@ -311,6 +333,9 @@ void ISR(void) {
         case CLC_DS2:
         case CLC_DS3:
             return;
+        case 0:
+            // Only clear MotorOns when all drives become inactive
+            NOT_MOTORON_D1 = NOT_MOTORON_D0 = 1;
         // else fall-through
     }
 
@@ -390,19 +415,18 @@ void enable_m4p(void) {
 
 // Flash LED_ENABLED slowly (with others on) indicating unit tests passed
 void pass_halt(void) {
-    LED_BANK = LED_DEFAULT = \
-        LED_ROW1 = LED_ROW2 = LED_ROW3 = LED_ROW4 = true;
+    LED_DEFAULT = LED_MAP_B0 = LED_MAP_B1 = LED_MAP_B2 = true;
     while (1) {
         LED_ENABLED = !LED_ENABLED;
         PAUSE; PAUSE;
     }
 }
 
-// Flash all leds indicating unit tests failed.
+// Alternately Flash all leds indicating unit tests failed.
 void error_halt(void) {
    while (1) {
-        LED_BANK = LED_DEFAULT = !LED_ENABLED;
-        LED_ROW1 = LED_ROW2 = LED_ROW3 = LED_ROW4 = !LED_ENABLED;
+        LED_ENABLED = LED_DEFAULT = !LED_ENABLED;
+        LED_MAP_B0 = LED_MAP_B1 = LED_MAP_B2 = !LED_ENABLED;
         PAUSE;
     }
 }
@@ -421,12 +445,9 @@ void check(bool ok) {
 }
 
 void check_leds(uint8_t map, bool is_enabled, bool is_default) {
-    check (LED_BANK == (map >= NUM_ROWS));
-    map &= ROW_MASK;
-    check(LED_ROW1 == (map == 0));
-    check(LED_ROW2 == (map == 1));
-    check(LED_ROW3 == (map == 2));
-    check(LED_ROW4 == (map == 3));    
+    check(LED_MAP_B0 == ((map & BIT(0)) > 0));
+    check(LED_MAP_B1 == ((map & BIT(1)) > 0));
+    check(LED_MAP_B2 == ((map & BIT(2)) > 0));
 
     check(LED_ENABLED == is_enabled);
     check(LED_DEFAULT == is_default);
@@ -518,6 +539,17 @@ void set_cmd(uint8_t map, bool set_default) {
     DDEN_IN = set_default;
 }
 
+void set_drive(uint8_t ds) {
+    set_inputs(0);
+    switch (ds) {
+        case 0: DS0_IN = 1; break;
+        case 1: DS1_IN = 1; break;
+        case 2: DS2_IN = 1; break;
+        case 3: DS3_IN = 1; break;
+    }
+    clk();
+}
+
 void unit_tests(void) {
     uint8_t map;
 
@@ -541,9 +573,11 @@ void unit_tests(void) {
           !SDSEL_IN && !SDSEL_OUT && !DDEN_IN && !DDEN_OUT &&
           !EXTBUS && ENABLE && !CLK && NOT_CLR);
 
+    check(NOT_MOTORON_D0 && NOT_MOTORON_D1);
+    
     // check initial LED outputs are set correctly
     check(LED_ENABLED && LED_DEFAULT && \
-          LED_ROW1 && !LED_ROW2 && !LED_ROW3 && !LED_ROW4);
+          !LED_MAP_B0 && !LED_MAP_B1 && !LED_MAP_B2);
 
     for (int mode = 0; mode < 2; mode++) {
         if (mode == 1)
@@ -553,14 +587,7 @@ void unit_tests(void) {
         for (map = 0; map < NUM_MAPS; map++) {
             set_current_map(map);
             for (int ds = 0; ds < NUM_DRIVES; ds++) {
-                set_inputs(0);
-                switch (ds) {
-                    case 0: DS0_IN = 1; break;
-                    case 1: DS1_IN = 1; break;
-                    case 2: DS2_IN = 1; break;
-                    case 3: DS3_IN = 1; break;
-                }
-                clk();
+                set_drive(ds);
                 check_outs(mapping[map][ds], false, false);
             }
         }
@@ -641,14 +668,7 @@ void unit_tests(void) {
     ei();
     for (int ds = 0; ds < NUM_DRIVES; ds++) {
         enable(true);
-        set_inputs(0);
-        switch (ds) {
-            case 0: DS0_IN = 1; break;
-            case 1: DS1_IN = 1; break;
-            case 2: DS2_IN = 1; break;
-            case 3: DS3_IN = 1; break;
-        }
-        clk();
+        set_drive(ds);
         check(current_map == LAST_MAP);
 
         // Disable shouldn't change the mapping while drives are in use.
@@ -659,8 +679,49 @@ void unit_tests(void) {
         external_clr();
         check(current_map == NO_MAP);
     }
-    di();
 
+    // Check MotorOn outputs and behavior.
+    // (with mapping disabled and interrupts enabled)
+
+    // Simulate accessing one drive at a time.
+    for (int ds = 0; ds < NUM_DRIVES; ds++) {
+        check(NOT_MOTORON_D0 && NOT_MOTORON_D1);
+        set_drive(ds);
+        switch(DSMAP(ds)) {
+            case 0: check(!NOT_MOTORON_D0 && NOT_MOTORON_D1); break;
+            case 1: check(NOT_MOTORON_D0 && !NOT_MOTORON_D1); break;
+            case 2: check(NOT_MOTORON_D0 && NOT_MOTORON_D1); break;
+            case 3: check(NOT_MOTORON_D0 && NOT_MOTORON_D1); break;
+        }
+        external_clr();
+    }
+
+    // Simulate accessing drives sequentially
+    // (validating the sticky behavior of MotorOn)
+    check(NOT_MOTORON_D0 && NOT_MOTORON_D1);
+    for (int ds = 0; ds < NUM_DRIVES; ds++) {
+        set_drive(ds);
+#ifdef MOTORON_D23      // Need to special case this, unfortunately
+        switch(ds) {
+            case 0: check(NOT_MOTORON_D0 && NOT_MOTORON_D1); break;
+            case 1: check(NOT_MOTORON_D0 && NOT_MOTORON_D1); break;
+            case 2: check(!NOT_MOTORON_D0 && NOT_MOTORON_D1); break;
+            case 3: check(!NOT_MOTORON_D0 && !NOT_MOTORON_D1); break;
+        }
+#else
+        switch(DSMAP(ds)) {
+            case 0: check(!NOT_MOTORON_D0 && NOT_MOTORON_D1); break;
+            case 1: check(!NOT_MOTORON_D0 && !NOT_MOTORON_D1); break;
+            case 2: check(!NOT_MOTORON_D0 && !NOT_MOTORON_D1); break;
+            case 3: check(!NOT_MOTORON_D0 && !NOT_MOTORON_D1); break;
+        }
+#endif
+    }
+    external_clr();
+    check(NOT_MOTORON_D0 && NOT_MOTORON_D1);
+
+    di();
+    
 #ifdef EEPROM
     // Check default set/init functions
     for (map = 0; map < NUM_MAPS; map++) {
