@@ -1,6 +1,6 @@
 # TRS-80 Floppy remapper
 
-![front of board](/images/front-v3.jpg) ![back of board](/images/back-v3.jpg)
+![front of board](/images/front-v4.jpg) ![back of board](/images/back-v4.jpg)
 
 ## Introduction
 
