@@ -1,0 +1,42 @@
+Part,Pin,Name,PIC function,Board function,Attributes,Notes,,
+PIC18F26Q10,7,RA6,CLCIN0,~CLR,IOC (falling),74LS174,1,~CLR
+PIC18F26Q10,13,RC5,CLC1OUT,DS0_Q,,74LS174,2,1Q
+PIC18F26Q10,12,RC4,CLCIN1,DS0_D,,74LS174,3,1D
+PIC18F26Q10,11,RC3,CLCIN3,DS1_D,,74LS174,4,2D
+PIC18F26Q10,10,RC2,CLC2OUT,DS1_Q,,74LS174,5,2Q
+PIC18F26Q10,9,RC1,CLCIN4,DS2_D,,74LS174,6,3D
+PIC18F26Q10,8,RC0,CLC5OUT,DS2_Q,,74LS174,7,3Q
+PIC18F26Q10,18,RB0,CLCIN2,CLK,IOC (rising),74LS174,9,CLK
+PIC18F26Q10,15,RC7,CLC6OUT,DS3_Q,,74LS174,10,4Q
+PIC18F26Q10,14,RC6,CLCIN5,DS3_D,,74LS174,11,4D
+PIC18F26Q10,19,RB1,CLC3OUT,SDSEL_Q,,74LS174,12,5Q
+PIC18F26Q10,20,RB2,CLCIN6,SDSEL_D,,74LS174,13,5D
+PIC18F26Q10,21,RB3,CLCIN7,DDEN_D,,74LS174,14,6D
+PIC18F26Q10,22,RB4,CLC4OUT,DDEN_Q,,74LS174,15,6Q
+PIC18F26Q10,23,RB5,GPIO in,Disable,IOC (both),"H/W debounced input, connect to ground via switch to disable remapping",,
+PIC18F26Q10,24,RB6,CLC7OUT,ExtBus / ICSPCLK,,"External bus select, set high if either drive 2 or drive 3 is selected (or if in M4P mode, set high for any drive enable).",,
+PIC18F26Q10,25,RB7,GPIO in,~M4P / ICSPDAT,weak pull up,"~M4P, pulled high by default (low == M4P mode)",,
+PIC18F26Q10,6,RA7,GPIO out,~MotorOn-0,,(was MotorOn-I) Open collector output,,
+PIC18F26Q10,28,RA1,GPIO out,LED_map1,,Drive high to light leds (sourcing current),,
+PIC18F26Q10,1,RA2,GPIO out,LED_map0,,,,
+PIC18F26Q10,2,RA3,GPIO out,LED_DEFAULT,,,,
+PIC18F26Q10,3,RA4,GPIO out,LED_Enabled,,,,
+PIC18F26Q10,27,RA0,GPIO out,LED_map2,,,,
+PIC18F26Q10,4,RA5,GPIO out,~MotorOn-1,,(was MotorOn-E) Open collector output,,
+PIC18F26Q10,26,RE3,,~MCLR,,,,
+,,,,,,,,
+Logic Block,Function,Output,Inputs,,,,,
+CLC1,S/R Flip flop,DS0,CLCIN1 (DS0),,,"Change register CLCxSEL1 (CLCIN1, 3, 4, 5) to change mapping",,
+CLC2,S/R Flip flop,DS1,CLCIN3 (DS1),,,,,
+CLC3,S/R Flip flop,SDSEL,CLCIN6,,,,,
+CLC4,S/R Flip flop,DDEN,CLCIN7,,,,,
+CLC5,S/R Flip flop,DS2,CLCIN4 (DS2),,,,,
+CLC6,S/R Flip flop,DS3,CLCIN5 (DS3),,,,,
+CLC7,AND/OR,ExtBus,"CLCOUT5, CLCOUT6",,,,,
+CLC8,AND/OR,Reset CLC1-6,none (low),,,reset CLC blocks 1-6 in parallel by toggling output polarity of CLC8,,
+,,,,,,,,
+"Note: Must use CLC3, 4, 7 for SDSEL, DDEN and ExtBus as they need to drive RBx pins, this leaves DS0,1,2,3 to use CLC1,2,5,6 respectively",,,,,,,,
+,,,,,,,,
+,,,,,,,,
+http://www.ti.com/lit/ds/symlink/sn74ls174.pdf,,,,,,,,
+http://ww1.microchip.com/downloads/en/DeviceDoc/PIC18F26-45-46Q10-Data-Sheet-40001996D.pdf,,,,,,,,
