@@ -1,6 +1,6 @@
 # TRS-80_floppy_remapper
 
-## V4 Design and PCB files
+## Design and PCB files
 
 * [Design files](/design): (schematic and pin map)
 * Datasheets: [PIC18F26Q10](http://ww1.microchip.com/downloads/en/DeviceDoc/PIC18F26-45-46Q10-Data-Sheet-40001996D.pdf), [74LS174](https://www.ti.com/lit/ds/symlink/sn74ls174.pdf)
@@ -14,7 +14,7 @@ If you are looking to build a simpler version of a floppy switch (not programmab
 and without M4P / M4 GA support), you can read about my earlier version here:
 * [V1 build info](http://www.vcfed.org/forum/showthread.php?70726-Booting-from-an-external-floppy-on-a-model-III&p=603230#post603230)
 
-## V4 Programming information
+## Programming information
 
 The following assumes you are familiar with using [MPLAB X IDE](https://www.microchip.com/mplab/mplab-x-ide).
 If you are not, you might want to check out some tutorials on YouTube.
