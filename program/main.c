@@ -55,6 +55,11 @@
 //#define FORCE_M4P
 //#define FORCE_NOT_M4P
 
+// Define one of the following to determine MotorOn pin behavior
+#define MOTORON_D01
+//#define MOTORON_D23
+//#define MOTORON_IE
+
 #define ERASED_DATA 0xff
 #ifdef EEPROM
 // Initialize the first 8 bytes of the EEPROM after every re-flash
@@ -300,23 +305,18 @@ void ISR(void) {
     if (m4p)
         clc ^= (CLC_DS2|CLC_DS3);
 
-// define one of the following to determine MotorOn pin behavior
-#define MOTORON_D01
-//#define MOTORON_D23
-//#define MOTORON_IE
-
     // MotorOn should follow each drive select
 #ifdef MOTORON_D01
     // Generate MotorOn for Internal Drives 0 or 1
 #define DSMAP(ds) (ds)
     if (clc & CLC_DS0) NOT_MOTORON_D0 = 0;
     if (clc & CLC_DS1) NOT_MOTORON_D1 = 0;
-#elif MOTORON_D23
+#elif defined(MOTORON_D23)
     // Generate MotorON for External Drives 2 or 3
 #define DSMAP(ds) ((ds) ^ 2)
     if (clc & CLC_DS2) NOT_MOTORON_D0 = 0;
     if (clc & CLC_DS3) NOT_MOTORON_D1 = 0;
-#elif MOTORON_IE
+#elif defined(MOTORON_IE)
     // Generate MotorON for Internal or External drive sets
 #define DSMAP(ds) ((ds) >> 1)
     if (clc & (CLC_DS0|CLC_DS1)) NOT_MOTORON_D0 = 0;
@@ -807,6 +807,11 @@ void main(void)
     set_current_map(3);
     enabled_map=3;
     ei();
+#endif
+#if defined(FORCE_M4P) || defined(FORCE_NOT_M4P)
+    // Set the default and map to 2 so we blink some leds
+    default_map=enabled_map=2;
+    set_map_leds();
 #endif
     
     // setup blink timer to show MCU is alive.
