@@ -5,7 +5,7 @@
 ## Introduction
 
 The TRS-80 floppy remapper is a simple board which dynamically remaps the floppy disk drives in vintage
-TRS-80 Model 3, 4, and 4P computers.
+[TRS-80](https://en.wikipedia.org/wiki/TRS-80) Model 3, 4, and 4P computers.
 
 The main reason for remapping the floppy drives on these computers
 is to enable booting from drives other than the fixed internal drive 0.  This is particualy
@@ -22,7 +22,7 @@ This map can be as simple as swapping drives 0 and 1 (useful perhaps if they are
 
 As a bonus, this board adds support for two external floppy drives on Model 4P
 computers (which previously only supported two internal drives).  Inspiration for
-this feature came from a [January 1986 80 Micro article](https://colorcomputerarchive.com/repo/Documents/Magazines/80%20Micro/1986/80%20Micro%20-%208601%20-%20January%201986.pdf), while significantly reducing the modifications needed.
+this feature came from a magazine article in [80 Micro (January 1986)](https://colorcomputerarchive.com/repo/Documents/Magazines/80%20Micro/1986/80%20Micro%20-%208601%20-%20January%201986.pdf), while significantly reducing the modifications needed.
 
 Remapping of the drives is controlled via software using the "out" command in Basic.
 You can set the current map (which will survive a reset), or set the default
@@ -62,8 +62,7 @@ vintage computers.
 
 ## TODO
 
-1. LED brightness is not exactly right (green is bit too bright,
-blue is too dim, reds are about right).
+1. LED brightness is not exactly right (green is still a bit too bright).
 1. Modify TRS-80 boot roms to control drive mapping via the keyboard (eliminating the need
 for a disable switch).
 1. Write theory of operation
