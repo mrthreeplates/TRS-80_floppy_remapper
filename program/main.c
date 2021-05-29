@@ -55,8 +55,10 @@
 //#define FORCE_M4P
 //#define FORCE_NOT_M4P
 
-// Define the following to force individual drive 0 and 1 motor control
-//#define SET_MOTOR_D01
+// Define one of the following to override motor control
+// from the default of controlling drives 0 and 1.
+#define SET_MOTOR_IE      // control internal and external drive pairs.
+//#define SET_MOTOR_D23     // control drives 2 and 3.
 
 #define ERASED_DATA 0xff
 #ifdef EEPROM
@@ -245,6 +247,7 @@ volatile uint8_t d0_ds;
 volatile uint8_t d1_ds;
 // for unit testing only
 uint8_t ds_shift;
+uint8_t ds_offset;
 
 // Clear CLC1-6 via external pin
 void external_clr(void) {
@@ -306,26 +309,31 @@ void set_motoron(bool inverted) {
     motoroff = inverted;
 }
 
-// Generate MotorON for Internal or External drive sets
-void set_motor_ie() {
-    set_motoron(false);         // non-inverted
+// Generate (~)MotorON for Internal or External drive sets
+void set_motor_ie(bool inverted) {
+    set_motoron(inverted);
     d0_ds = CLC_DS0|CLC_DS1;
     d1_ds = CLC_DS2|CLC_DS3;
     ds_shift = 1;
+    ds_offset = 0;
 }
 
-// Generate ~MotorOn for Internal or External drive sets
-void set_motor_ie_inv() {
-    set_motor_ie();
-    set_motoron(true);          // inverted
-}
-
-// Generate ~MotorOn for Internal Drives 0 or 1
-void set_motor_d01_inv() {
-    set_motoron(true);          // inverted
+// Generate (~)MotorOn for Internal Drives 0 or 1
+void set_motor_d01(bool inverted) {
+    set_motoron(inverted);
     d0_ds = CLC_DS0;
     d1_ds = CLC_DS1;
     ds_shift = 0;
+    ds_offset = 0;
+}
+
+// Generate (~)MotorOn for Internal Drives 2 or 3
+void set_motor_d23(bool inverted) {
+    set_motoron(inverted);
+    d0_ds = CLC_DS2;
+    d1_ds = CLC_DS3;
+    ds_shift = 0;
+    ds_offset = 2;
 }
 
 void ISR(void) {
@@ -700,13 +708,14 @@ void unit_tests(void) {
         check(current_map == NO_MAP);
     }
 
-    // Check MotorOn outputs and behavior.
+    // Check MotorOn outputs and behavior for different modes.
     // (with mapping disabled and interrupts enabled)
-    for (uint8_t mode = 0; mode < 3; mode++) {
+    for (uint8_t mode = 0; mode < 4; mode++) {
         switch (mode) {
-            case 0: set_motor_ie(); break;
-            case 1: set_motor_ie_inv(); break;
-            case 2: set_motor_d01_inv(); break;
+            case 0: set_motor_ie(false); break;
+            case 1: set_motor_ie(true); break;
+            case 2: set_motor_d01(true); break;
+            case 3: set_motor_d23(true); break;
         }
         external_clr();
         check_motor(motoroff, motoroff);
@@ -714,7 +723,9 @@ void unit_tests(void) {
         // Simulate accessing one drive at a time.
         for (int ds = 0; ds < NUM_DRIVES; ds++) {
             set_drive(ds);
-            switch(ds >> ds_shift) {
+            switch((ds >> ds_shift) - ds_offset) {
+                case -2: check_motor(motoroff, motoroff); break;
+                case -1: check_motor(motoroff, motoroff); break;
                 case 0: check_motor(motoron, motoroff); break;
                 case 1: check_motor(motoroff, motoron); break;
                 case 2: check_motor(motoroff, motoroff); break;
@@ -728,7 +739,9 @@ void unit_tests(void) {
         // (validating the sticky behavior of MotorOn)
         for (int ds = 0; ds < NUM_DRIVES; ds++) {
             set_drive(ds);
-            switch(ds >> ds_shift) {
+            switch((ds >> ds_shift) - ds_offset) {
+                case -2: check_motor(motoroff, motoroff); break;
+                case -1: check_motor(motoroff, motoroff); break;
                 case 0: check_motor(motoron, motoroff); break;
                 case 1: check_motor(motoron, motoron); break;
                 case 2: check_motor(motoron, motoron); break;
@@ -792,16 +805,21 @@ void main(void)
         enable_m4p();
 
     // Set MotorOn behavior
-#ifdef SET_MOTOR_D01
-    set_motor_d01_inv();
-#else
-    if (m4p) {      // only also true if test_status != RUN_TESTS
-        set_motor_ie_inv();
+#if defined(SET_MOTOR_IE)
+    set_motor_ie(m4p);
+    if (m4p && test_status != RUN_TESTS) {
         // Change MotorOn-1 (external drive set) to be open drain
         ODCONA = BIT(5);
-    } else {
-        set_motor_ie();
     }
+#elif defined(SET_MOTOR_D23)
+    set_motor_d23(true);
+    if (test_status != RUN_TESTS) {
+        // Change both MotorOn (external drives 2 and 3) to be open drain
+        ODCONA = BIT(5) | BIT(7);
+    }
+#else
+    // default to control drives 0 and 1.
+    set_motor_d01(true);
 #endif
 
     mapper_init();
