@@ -806,8 +806,8 @@ void main(void)
 
     // Set MotorOn behavior
 #if defined(SET_MOTOR_IE)
-    set_motor_ie(m4p);
-    if (m4p && test_status != RUN_TESTS) {
+    set_motor_ie(true);
+    if (test_status != RUN_TESTS) {
         // Change MotorOn-1 (external drive set) to be open drain
         ODCONA = BIT(5);
     }
