@@ -72,13 +72,15 @@ The LEDs will flash through a set of patterns which will take about 15 seconds.
 At the end, all of the LEDs should remain lit, with the enable LED flashing slowly.
 This indicates the tests passed and also helps you confirm all the LEDs are working.
 
-View the programming video here: ![programming-v3](/images/programming-v3.mp4)
+View the programming video here: [programming-v3](/images/programming-v3.mp4)
+
+NOTE: This video is from version 3 of the board.  Version 4 has a different arrangement of LEDs, but the leds go through a similar sequence.
 
 The next time the PIC boots, it will assume it has been installed into a TRS-80 and
 will start working normally.  If you boot the PIC without having it installed, the
 board may behave unpredictably due to floating inputs (although there is no harm).
 
-At the end of the tests, if an error is found, all of the LEDs will flash in an
+WARNING:  At the end of the tests, if an error is found, all of the LEDs will flash in an
 alternating pattern.  This means there is either a bug in the code or a problem with
 the board.
 In order to clear the error, you must fix the problem and re-program the PIC.
