@@ -1,1 +1,4 @@
+Errors (Thanks to Tuc for spotting these...)
 
+1) The resistor values in the schematic are wrong, but correct in the BoM.  They were chosen after the schematic was created to optimize for the led brightness.
+2) The capacitor values in the BoM are wrong.  Please consult the schematic for the correct values.
